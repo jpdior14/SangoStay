@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SangoStay - Guest Verification</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#13ec13", "primary-hover": "#0fb80f", "background-light": "#f6f8f6", "background-dark": "#102210", "surface-dark": "#162b16", "surface-border": "#234823", "text-secondary": "#92c992"}, fontFamily: {display: "Plus Jakarta Sans"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+<style>
+        /* Custom scrollbar for dark mode vibe */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #102210;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #234823;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #13ec13;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-background-dark overflow-x-hidden flex flex-col min-h-screen">
+<!-- Navbar -->
+<nav class="sticky top-0 z-50 border-b border-surface-border bg-background-dark/95 backdrop-blur-md px-6 py-4">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<a href="index.html" class="flex items-center gap-3 text-white cursor-pointer">
+    <span class="material-symbols-outlined text-primary text-3xl">travel_explore</span>
+    <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">SangoStay</h2>
+</a>
+<div class="hidden md:flex items-center gap-2 px-3 py-1 bg-surface-dark rounded-full border border-surface-border">
+<span class="material-symbols-outlined text-primary text-[18px]">lock</span>
+<span class="text-xs text-text-secondary font-medium uppercase tracking-wider">Secure Connection</span>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-white hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-white hover:text-primary transition-colors" href="#">Listings</a>
+<a class="text-sm font-medium text-white hover:text-primary transition-colors" href="#">Help</a>
+</nav>
+<div class="size-8 rounded-full bg-surface-dark border border-surface-border flex items-center justify-center text-white cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col md:flex-row h-full min-h-[calc(100vh-73px)]">
+<!-- Left Side: Verification Form -->
+<div class="flex-1 flex flex-col justify-center px-6 py-10 md:px-16 lg:px-24 xl:px-32 bg-background-dark relative overflow-hidden">
+<!-- Decorative Glow -->
+<div class="absolute -top-20 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="max-w-[520px] w-full mx-auto flex flex-col gap-8 relative z-10">
+<!-- Heading -->
+<div class="flex flex-col gap-3">
+<h1 class="text-white text-4xl md:text-5xl font-black leading-[1.1] tracking-tight">
+                        Let's Keep <span class="text-primary">SangoStay</span> Safe
+                    </h1>
+<p class="text-text-secondary text-lg font-normal leading-relaxed">
+                        Please verify your identity via SMS or National ID (CNI) to ensure the safety of our hosts and guests in Cameroon.
+                    </p>
+</div>
+<!-- Toggle -->
+<div class="p-1 rounded-xl bg-surface-dark border border-surface-border inline-flex w-full">
+<label class="group cursor-pointer relative flex-1">
+<input checked="" class="peer sr-only" name="verif_method" type="radio" value="phone"/>
+<div class="flex items-center justify-center gap-2 py-3 rounded-lg text-sm font-semibold text-text-secondary transition-all peer-checked:bg-background-dark peer-checked:text-white peer-checked:shadow-sm peer-checked:ring-1 peer-checked:ring-surface-border group-hover:text-white">
+<span class="material-symbols-outlined text-[18px]">smartphone</span>
+<span>Phone (SMS)</span>
+</div>
+</label>
+<label class="group cursor-pointer relative flex-1">
+<input class="peer sr-only" name="verif_method" type="radio" value="cni"/>
+<div class="flex items-center justify-center gap-2 py-3 rounded-lg text-sm font-semibold text-text-secondary transition-all peer-checked:bg-background-dark peer-checked:text-white peer-checked:shadow-sm peer-checked:ring-1 peer-checked:ring-surface-border group-hover:text-white">
+<span class="material-symbols-outlined text-[18px]">id_card</span>
+<span>Document (CNI)</span>
+</div>
+</label>
+</div>
+<!-- Form Container -->
+<div class="flex flex-col gap-6 p-6 rounded-2xl bg-surface-dark/50 border border-surface-border/50">
+<!-- Phone Input -->
+<div class="flex flex-col gap-2">
+<label class="text-white text-sm font-medium">Phone Number (+237)</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+<span class="material-symbols-outlined text-text-secondary">call</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 bg-background-dark border border-surface-border rounded-lg text-white placeholder-text-secondary/50 focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-base" placeholder="6xx-xx-xx-xx" type="tel"/>
+</div>
+<p class="text-xs text-text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">info</span>
+                            We'll send a 6-digit code to this number.
+                        </p>
+</div>
+<!-- OTP Input (Visual Step 2) -->
+<div class="flex flex-col gap-3">
+<label class="text-white text-sm font-medium flex justify-between">
+<span>Confirmation Code</span>
+<span class="text-primary text-xs cursor-pointer hover:underline">Resend Code</span>
+</label>
+<div class="flex gap-2 sm:gap-3 justify-between">
+<!-- Using provided confirmation code style but refined size -->
+<input class="w-12 h-14 text-center bg-background-dark border-b-2 border-surface-border rounded-t-lg text-xl font-medium text-white focus:outline-none focus:border-primary focus:bg-surface-dark transition-colors" 
+       maxlength="1" 
+       placeholder="•" 
+       type="text" 
+       inputmode="numeric" />
+<input class="w-12 h-14 text-center bg-background-dark border-b-2 border-surface-border rounded-t-lg text-xl font-medium text-white focus:outline-none focus:border-primary focus:bg-surface-dark transition-colors" 
+       maxlength="1" 
+       placeholder="•" 
+       type="text" 
+       inputmode="numeric" />
+<input class="w-12 h-14 text-center bg-background-dark border-b-2 border-surface-border rounded-t-lg text-xl font-medium text-white focus:outline-none focus:border-primary focus:bg-surface-dark transition-colors" 
+       maxlength="1" 
+       placeholder="•" 
+       type="text" 
+       inputmode="numeric" />
+<input class="w-12 h-14 text-center bg-background-dark border-b-2 border-surface-border rounded-t-lg text-xl font-medium text-white focus:outline-none focus:border-primary focus:bg-surface-dark transition-colors" 
+       maxlength="1" 
+       placeholder="•" 
+       type="text" 
+       inputmode="numeric" />
+<input class="w-12 h-14 text-center bg-background-dark border-b-2 border-surface-border rounded-t-lg text-xl font-medium text-white focus:outline-none focus:border-primary focus:bg-surface-dark transition-colors" 
+       maxlength="1" 
+       placeholder="•" 
+       type="text" 
+       inputmode="numeric" />
+<input class="w-12 h-14 text-center bg-background-dark border-b-2 border-surface-border rounded-t-lg text-xl font-medium text-white focus:outline-none focus:border-primary focus:bg-surface-dark transition-colors" 
+       maxlength="1" 
+       placeholder="•" 
+       type="text" 
+       inputmode="numeric" />
+</div>
+</div>
+<!-- Submit Button -->
+<button onclick="handleFinalVerification()" class="w-full h-12 mt-2 bg-primary hover:bg-primary-hover text-background-dark font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
+    <span>Verify Identity</span>
+    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- Trust Badges -->
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-surface-border/50">
+<div class="flex items-start gap-3">
+<div class="p-2 rounded-full bg-surface-dark text-primary">
+<span class="material-symbols-outlined">encrypted</span>
+</div>
+<div>
+<p class="text-white text-sm font-bold">Encrypted Data</p>
+<p class="text-text-secondary text-xs">Bank-level 256-bit encryption.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="p-2 rounded-full bg-surface-dark text-primary">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div>
+<p class="text-white text-sm font-bold">Official Partners</p>
+<p class="text-text-secondary text-xs">MTN &amp; Orange Money verified.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Links small -->
+<div class="absolute bottom-4 left-0 w-full text-center">
+<p class="text-text-secondary text-xs">
+                    Need help? Contact our <a class="text-primary hover:underline" href="#">Douala Support Center</a>.
+                </p>
+</div>
+</div>
+<!-- Right Side: Visual Panel -->
+<div class="hidden lg:block lg:w-1/2 relative bg-surface-dark">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="Scenic view of lush green Cameroonian landscape with mist covered mountains representing local beauty" class="w-full h-full object-cover opacity-60 mix-blend-overlay grayscale-[30%]" data-alt="Scenic view of lush green Cameroonian landscape with mist covered mountains representing local beauty" data-location="Mount Cameroon, Buea" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDO__aokYIKoWqwN-h9ApfdhqQ7VqLojQ1TAdvBvB7mewlzPONh-v-YboEa4tP4brq1BjN7amP-XUYOtt2J5iz6PggSh510Jv0Se_jkLodfRkziezeJSrKo06BP100_90Q_T5S884ivbyjitB_-LtCu1RiKsPzj6qj38vdKRXNYCajDszhxk7Yv7C8ETuBQ3YznoWVert-QGNC-YDakJt8NxkEZCbx5abxmeEZT0SpSyonu_dKS30xfdojmuintsrst7w2R6YN9kSw"/>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background-dark via-transparent to-transparent"></div>
+</div>
+<!-- Content overlay on image -->
+<div class="absolute bottom-0 left-0 w-full p-16 z-10">
+<div class="max-w-md">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-6">
+<span class="material-symbols-outlined text-white text-[18px]">location_on</span>
+<span class="text-xs text-white font-medium">Mount Cameroon, Buea</span>
+</div>
+<blockquote class="text-2xl font-medium text-white leading-relaxed mb-6">
+                        "Verification helps us maintain the authentic and safe community that makes Cameroonian hospitality so special."
+                    </blockquote>
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-background-dark font-bold">
+                            SS
+                        </div>
+<div>
+<p class="text-white font-bold text-sm">SangoStay Team</p>
+<p class="text-white/60 text-xs">Community Safety</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- SangoStay AI Chatbot UI -->
+<div id="chat-container" class="fixed bottom-6 right-6 z-[100] font-display">
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle" class="bg-primary text-background-dark p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
+        <span class="material-symbols-outlined text-3xl">smart_toy</span>
+    </button>
+
+    <!-- Chat Window (Hidden by default) -->
+    <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[350px] md:w-[400px] h-[500px] bg-surface-dark border border-surface-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        <!-- Header -->
+        <div class="bg-primary p-4 flex justify-between items-center">
+            <div class="flex items-center gap-2 text-background-dark">
+                <span class="material-symbols-outlined">travel_explore</span>
+                <span class="font-bold">Sango AI</span>
+            </div>
+            <button id="close-chat" class="text-background-dark font-bold">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 flex flex-col bg-[#112211]">
+            <!-- AI Welcome Message -->
+            <div class="bg-[#234823] text-white p-3 rounded-lg max-w-[80%] self-start text-sm">
+                Mbolo! I am the SangoStay AI. How can I help you find a secure stay in Cameroon today?
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-4 border-t border-surface-border bg-surface-dark flex gap-2">
+            <input type="text" id="user-input" placeholder="Ask about Bastos, MoMo..." class="flex-1 bg-[#112211] border border-surface-border rounded-lg px-3 py-2 text-white text-sm focus:ring-primary focus:border-primary outline-none">
+            <button id="send-btn" class="bg-primary text-background-dark p-2 rounded-lg hover:bg-white transition-colors">
+                <span class="material-symbols-outlined">send</span>
+            </button>
+        </div>
+    </div>
+</div>
+<script src="data.js"></script>
+<script src="config.js"></script>
+<script src="chat.js"></script>
+<script>
+    // 1. Select all the OTP input boxes
+    const otpInputs = document.querySelectorAll('input[maxlength="1"]');
+
+    otpInputs.forEach((input, index) => {
+        // 2. Handle typing: Move to the NEXT box automatically
+        input.addEventListener('input', (e) => {
+            if (e.target.value.length === 1 && index < otpInputs.length - 1) {
+                otpInputs[index + 1].focus();
+            }
+        });
+
+        // 3. Handle Backspace: Move to the PREVIOUS box automatically
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                otpInputs[index - 1].focus();
+            }
+        });
+    });
+</script>
+<script>
+function handleFinalVerification() {
+    // 1. Get all the OTP inputs
+    const inputs = document.querySelectorAll('input[inputmode="numeric"]');
+    let code = "";
+    inputs.forEach(input => code += input.value);
+
+    // 2. Check if the user actually typed something
+    if (code.length < 6) {
+        alert("Please enter the full 6-digit code sent to your phone.");
+        return;
+    }
+
+    // 3. Show a "Processing" state (Optional but looks pro)
+    const btn = event.currentTarget;
+    btn.innerHTML = "Processing...";
+    btn.disabled = true;
+
+    // 4. Simulate the verification delay
+    setTimeout(() => {
+        // 5. The Big Success Message
+        alert("✅ IDENTITY VERIFIED!\n\nYour booking at Villa des Fleurs is now CONFIRMED. \n\nCheck your SMS for the exact landmark and the host's direct WhatsApp number. Welcome to SangoStay!");
+
+        // 6. REDIRECT TO HOME (P1)
+        window.location.href = 'index.html';
+    }, 2000);
+}
+</script>
+</body>
+</html>

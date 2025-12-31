@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SangoStay - Booking Confirmation</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- CRITICAL: Material Symbols Link -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#13ec13", "primary-dark": "#0fb80f", "background-light": "#f6f8f6", "background-dark": "#102210", "surface-dark": "#193319", "border-green": "#326732", "text-muted": "#92c992"}, fontFamily: {display: "Plus Jakarta Sans"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+</head>
+<body class="bg-background-dark text-white font-display overflow-x-hidden min-h-screen flex flex-col selection:bg-primary selection:text-background-dark">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-border-green bg-background-dark/95 backdrop-blur-sm">
+<div class="px-4 md:px-10 py-3 flex items-center justify-between max-w-[1400px] mx-auto">
+<a href="index.html" class="flex items-center gap-2 text-white cursor-pointer">
+    <span class="material-symbols-outlined text-primary text-3xl">travel_explore</span>
+    <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">SangoStay</h2>
+</a>
+<div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+<div class="flex items-center gap-9">
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">Home</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">My Trips</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">Support</a>
+</div>
+<button class="flex items-center justify-center rounded-lg h-10 px-5 bg-primary hover:bg-primary-dark transition-colors text-[#112211] text-sm font-bold">
+                    Profile
+                </button>
+</div>
+<!-- Mobile Menu Icon -->
+<div class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-[1200px] mx-auto px-4 md:px-8 py-8 md:py-12">
+<!-- Progress Stepper -->
+<div class="mb-10 max-w-3xl">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span class="text-white font-medium">Request</span>
+</div>
+<div class="h-[1px] flex-1 bg-border-green mx-4"></div>
+<div class="flex items-center gap-2">
+<span class="flex items-center justify-center w-5 h-5 rounded-full bg-primary text-background-dark text-xs font-bold">2</span>
+<span class="text-white font-bold">Payment &amp; Verify</span>
+</div>
+<div class="h-[1px] flex-1 bg-border-green mx-4 opacity-50"></div>
+<div class="flex items-center gap-2 opacity-50">
+<span class="flex items-center justify-center w-5 h-5 rounded-full border border-gray-400 text-gray-400 text-xs font-bold">3</span>
+<span class="text-gray-400 font-medium">Confirmation</span>
+</div>
+</div>
+<div class="h-1.5 w-full bg-surface-dark rounded-full overflow-hidden mt-3">
+<div class="h-full bg-primary w-2/3 shadow-[0_0_10px_#13ec13]"></div>
+</div>
+<p class="text-primary text-sm mt-2 font-medium animate-pulse">Action Required: Complete payment to hold your dates.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+<!-- Left Column: Action Area -->
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-8">
+<!-- Headline Group -->
+<div>
+<h1 class="text-3xl md:text-4xl lg:text-[40px] font-bold tracking-tight leading-[1.1] mb-3">
+                        You're almost there! <br/>Secure your stay in Yaoundé.
+                    </h1>
+<p class="text-text-muted text-lg leading-relaxed max-w-2xl">
+                        Your booking at <span class="text-white font-semibold">Villa des Fleurs</span> is currently pending. Please complete the secure payment and identity verification below to finalize your reservation.
+                    </p>
+</div>
+<!-- Payment Section -->
+<div class="bg-surface-dark border border-border-green rounded-xl p-6 md:p-8 shadow-lg">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">payments</span>
+<h2 class="text-xl font-bold">Secure Payment</h2>
+</div>
+<span class="bg-[#2a4d2a] text-primary text-xs font-bold px-3 py-1 rounded-full border border-primary/20">
+                            ESCROW PROTECTION
+                        </span>
+</div>
+<!-- Payment Method Tabs -->
+<div class="grid grid-cols-2 gap-4 mb-6">
+<label class="cursor-pointer relative group">
+<input checked="" class="peer sr-only" name="payment_method" type="radio"/>
+<div class="p-4 rounded-lg border-2 border-border-green bg-[#112211] hover:border-primary/50 peer-checked:border-primary peer-checked:bg-[#1a381a] transition-all flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full bg-[#ffcc00] flex items-center justify-center text-black font-bold text-xs" data-alt="MTN Mobile Money Logo (Yellow circle)">MTN</div>
+<span class="font-bold text-sm">Mobile Money</span>
+</div>
+<div class="absolute top-2 right-2 opacity-0 peer-checked:opacity-100 text-primary">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+</label>
+<label class="cursor-pointer relative group">
+<input class="peer sr-only" name="payment_method" type="radio"/>
+<div class="p-4 rounded-lg border-2 border-border-green bg-[#112211] hover:border-[#ff7f00]/50 peer-checked:border-[#ff7f00] peer-checked:bg-[#2e2014] transition-all flex flex-col items-center gap-2">
+<div class="w-12 h-12 rounded-full bg-[#ff7f00] flex items-center justify-center text-black font-bold text-xs" data-alt="Orange Money Logo (Orange circle)">OM</div>
+<span class="font-bold text-sm">Orange Money</span>
+</div>
+<div class="absolute top-2 right-2 opacity-0 peer-checked:opacity-100 text-[#ff7f00]">
+<span class="material-symbols-outlined text-xl">check_circle</span>
+</div>
+</label>
+</div>
+<!-- Phone Input -->
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-text-muted mb-1.5">Mobile Number</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="text-gray-400 font-bold text-sm">+237</span>
+</div>
+<input class="block w-full pl-14 pr-3 py-3 ... " placeholder="6xx-xx-xx-xx" type="tel"/>
+</div>
+</div>
+<div class="bg-[#112211] rounded-lg p-4 border border-border-green flex items-start gap-3">
+<span class="material-symbols-outlined text-text-muted mt-0.5">info</span>
+<div class="text-sm text-text-muted">
+<p class="mb-1">After clicking "Pay Now", check your phone for the USSD prompt (e.g., *126#) to authorize the transaction.</p>
+<p class="text-primary text-xs font-semibold">Funds are held in Escrow and only released to the host 24h after check-in.</p>
+</div>
+</div>
+<button onclick="handlePayment()" class="w-full bg-primary hover:bg-primary-dark text-background-dark font-bold text-lg py-3.5 rounded-lg shadow-[0_4px_14px_0_rgba(19,236,19,0.39)] transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
+    <span>Pay 105,000 XAF</span>
+	<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+
+<script>
+function handlePayment() {
+    // 1. Simulate the MoMo Push
+    alert("SangoStay: Payment request sent to your phone. Please enter your PIN.");
+    
+    // 2. Wait 2 seconds for the "transaction" to process
+    setTimeout(() => {
+        alert("Payment Received! Now, for your safety and the host's safety, please verify your identity.");
+        
+        // 3. REDIRECT TO P6 (The Verification Page)
+        window.location.href = 'guest_verify.html'; 
+    }, 2000);
+}
+</script>
+</div>
+</div>
+<!-- Verification Section -->
+<div class="bg-surface-dark border border-border-green rounded-xl p-6 md:p-8">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-white text-3xl">badge</span>
+<div>
+<h2 class="text-xl font-bold">Identity Verification</h2>
+<p class="text-text-muted text-sm">Required by Cameroonian law for short-term rentals.</p>
+</div>
+</div>
+<div class="border-2 border-dashed border-border-green rounded-xl p-8 flex flex-col items-center justify-center text-center bg-[#112211] hover:bg-[#142814] transition-colors cursor-pointer group">
+<div class="w-16 h-16 rounded-full bg-surface-dark flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">cloud_upload</span>
+</div>
+<h3 class="text-white font-bold text-lg mb-1">Upload your CNI or Passport</h3>
+<p class="text-text-muted text-sm max-w-xs mx-auto">Drag &amp; drop your file here, or click to browse. Formats: JPG, PNG, PDF.</p>
+<div class="mt-4 flex items-center gap-2 text-xs text-text-muted bg-surface-dark px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-sm">lock</span>
+                            Encrypted &amp; only shared upon booking
+                        </div>
+</div>
+</div>
+</div>
+<!-- Right Column: Summary -->
+<div class="lg:col-span-5 xl:col-span-4 flex flex-col gap-6">
+<!-- Property Card -->
+<div class="bg-surface-dark border border-border-green rounded-xl overflow-hidden sticky top-24">
+<!-- Image -->
+<div class="h-48 w-full relative bg-gray-800" data-alt="Modern villa in Yaounde with lush garden and pool">
+<!-- Abstract Gradient Pattern for Image -->
+<div class="absolute inset-0 bg-gradient-to-br from-[#1e3a1e] to-[#112211] opacity-80"></div>
+<img alt="Villa des Fleurs Exterior" class="w-full h-full object-cover opacity-80" data-alt="Exterior of a modern villa with tropical plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWpc1GT04iWd6UrRhR0lwcuziPGdccw6rVMDACLxiZs1h96EgzAIwOht0BME0Qp9rBXIU6FKMztG3lJSgw2CCH0NQGf2_lOIOQuzheEw_mtOyRPjnI2XFgQ5sk5Q5v-yIOlxjmAaKu1j7_PoghKKpOP_EysxX_tT9rvBiFJwv-D4jlhl24_pgCJ8GVAdmLserJZ4jBwGlz6gloMKEyqG8b7GuHUzUJKTNK835kqseQEKkI-8H0_AHCR0NuGxJIDB-Z3maAsCZWW4Q"/>
+<div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-surface-dark to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-primary text-background-dark text-xs font-bold px-2 py-1 rounded">Superhost</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-5">
+<div>
+<h3 class="text-xl font-bold text-white mb-1">Villa des Fleurs</h3>
+<div class="flex items-center gap-1 text-text-muted text-sm">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                                Bonapriso, Douala
+                            </div>
+</div>
+<!-- Details Grid -->
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-[#112211] p-3 rounded-lg border border-border-green/50">
+<div class="text-xs text-text-muted mb-1">Check-in</div>
+<div class="font-bold text-sm">12 Nov</div>
+<div class="text-xs text-gray-500">14:00</div>
+</div>
+<div class="bg-[#112211] p-3 rounded-lg border border-border-green/50">
+<div class="text-xs text-text-muted mb-1">Check-out</div>
+<div class="font-bold text-sm">15 Nov</div>
+<div class="text-xs text-gray-500">11:00</div>
+</div>
+</div>
+<div class="flex items-center gap-2 text-sm text-white">
+<span class="material-symbols-outlined text-text-muted">group</span>
+<span>2 Guests</span>
+</div>
+<div class="h-[1px] bg-border-green w-full"></div>
+<!-- Price Breakdown -->
+<div class="space-y-2">
+<div class="flex justify-between text-sm text-text-muted">
+<span>35,000 XAF x 3 nights</span>
+<span>105,000 XAF</span>
+</div>
+<div class="flex justify-between text-sm text-text-muted">
+<span>Service Fee</span>
+<span>0 XAF</span>
+</div>
+<div class="flex justify-between text-sm text-text-muted">
+<span>Cleaning Fee</span>
+<span>Included</span>
+</div>
+<div class="h-[1px] bg-border-green w-full my-2"></div>
+<div class="flex justify-between items-center text-white">
+<span class="font-bold">Total (XAF)</span>
+<span class="font-extrabold text-xl text-primary">105,000</span>
+</div>
+</div>
+</div>
+<!-- Landmark Tip -->
+<div class="bg-[#112211] p-4 border-t border-border-green flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">map</span>
+<div>
+<p class="text-xs font-bold text-white uppercase tracking-wider mb-1">Local Tip</p>
+<p class="text-xs text-text-muted">You are just 5 mins away from the <span class="text-white">Monument de la Réunification</span>.</p>
+</div>
+</div>
+</div>
+<!-- Support Card -->
+<div class="bg-surface-dark border border-border-green rounded-xl p-5 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-sm font-bold text-white">Need help?</span>
+<span class="text-xs text-text-muted">Chat with our local support</span>
+</div>
+<button class="p-2 bg-[#25d366] text-white rounded-full hover:bg-[#20bd5a] transition-colors">
+<span class="material-symbols-outlined text-xl">chat</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto border-t border-border-green bg-[#0d1c0d] py-8">
+<div class="max-w-[1200px] mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-text-muted text-sm">© 2025 SangoStay Cameroon. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-text-muted hover:text-white text-sm" href="#">Privacy</a>
+<a class="text-text-muted hover:text-white text-sm" href="#">Terms</a>
+<a class="text-text-muted hover:text-white text-sm" href="#">Sitemap</a>
+</div>
+</div>
+</footer>
+<!-- SangoStay AI Chatbot UI -->
+<div id="chat-container" class="fixed bottom-6 right-6 z-[100] font-display">
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle" class="bg-primary text-background-dark p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
+        <span class="material-symbols-outlined text-3xl">smart_toy</span>
+    </button>
+
+    <!-- Chat Window (Hidden by default) -->
+    <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[350px] md:w-[400px] h-[500px] bg-surface-dark border border-surface-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        <!-- Header -->
+        <div class="bg-primary p-4 flex justify-between items-center">
+            <div class="flex items-center gap-2 text-background-dark">
+                <span class="material-symbols-outlined">travel_explore</span>
+                <span class="font-bold">Sango AI</span>
+            </div>
+            <button id="close-chat" class="text-background-dark font-bold">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 flex flex-col bg-[#112211]">
+            <!-- AI Welcome Message -->
+            <div class="bg-[#234823] text-white p-3 rounded-lg max-w-[80%] self-start text-sm">
+                Mbolo! I am the SangoStay AI. How can I help you find a secure stay in Cameroon today?
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-4 border-t border-surface-border bg-surface-dark flex gap-2">
+            <input type="text" id="user-input" placeholder="Ask about Bastos, MoMo..." class="flex-1 bg-[#112211] border border-surface-border rounded-lg px-3 py-2 text-white text-sm focus:ring-primary focus:border-primary outline-none">
+            <button id="send-btn" class="bg-primary text-background-dark p-2 rounded-lg hover:bg-white transition-colors">
+                <span class="material-symbols-outlined">send</span>
+            </button>
+        </div>
+    </div>
+</div>
+<script src="data.js"></script>
+<script src="config.js"></script>
+<script src="chat.js"></script>
+</body></html>

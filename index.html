@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SangoStay - Short-term rentals in Cameroon</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#13ec13", "primary-dark": "#0fb30f", "background-light": "#f6f8f6", "background-dark": "#102210", "surface-dark": "#193319", "surface-border": "#326732", "text-secondary": "#92c992"}, fontFamily: {display: "Plus Jakarta Sans", body: ["Plus Jakarta Sans", "sans-serif"]}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navbar -->
+<div class="w-full flex justify-center sticky top-0 z-50 bg-[#112211]/90 backdrop-blur-md border-b border-surface-border">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap px-4 py-3 md:px-10">
+    <!-- Logo -->
+    <div class="flex items-center gap-2 text-white cursor-pointer" onclick="window.location.href='sango_p1.html'">
+        <span class="material-symbols-outlined text-primary text-3xl">travel_explore</span>
+        <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">SangoStay</h2>
+    </div>
+
+    <div class="flex flex-1 justify-end gap-4 md:gap-8">
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center gap-6">
+            <!-- Link to Host Verification -->
+            <a class="text-white text-sm font-medium hover:text-primary transition-colors" href="sango_p5.html">Become a Host</a>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="flex gap-2">
+            <!-- Sign In goes to Search Results -->
+            <button onclick="window.location.href='search.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-transparent border border-surface-border text-white text-sm font-bold hover:bg-surface-dark transition-colors">
+                <span class="truncate">Sign In</span>
+            </button>
+            
+            <!-- Sign Up goes to Guest Verification -->
+            <button onclick="window.location.href='guess_verify.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-[#112211] text-sm font-bold hover:bg-primary-dark transition-colors">
+                <span class="truncate">Sign Up</span>
+            </button>
+        </div>
+    </div>
+</header>
+</div>
+</div>
+<!-- Hero Section -->
+<div class="w-full flex flex-1 justify-center py-0">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+<div class="@container">
+<div class="p-4 md:px-10 md:py-8">
+<div class="relative flex min-h-[480px] md:min-h-[550px] flex-col gap-6 bg-cover bg-center bg-no-repeat rounded-xl items-center justify-center p-4 overflow-hidden" data-alt="Beautiful lush green landscape of Mount Cameroon with mist" style='background-image: linear-gradient(rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAnCKb3ibkVt0Lo-Pz828jQmJfte8NfBPtyeJEjOmowj54TgtHbjrLOMoAQ2cGl8c_nhuXwp9FDnBAYh5GzOu864jmyBrXyS5s50AT6UkX-ubwAtPuNmBprC3iwSW_NqErCBT_YT6DIEfFl3N-8S5dYWvJOPFH9IKHEw-0oDgGqDnLHEnM27HeDupSY1UuF1UCRXk8lItdbsmPIjpCeHZt3oKOsyuIAhG5DI3iHCU9jhLfynYBL_o8c3PIheOmYgNuYML60gv4MSnk");'>
+<div class="flex flex-col gap-3 text-center max-w-[720px] z-10">
+<h1 class="text-white text-4xl md:text-6xl font-black leading-tight tracking-[-0.033em] drop-shadow-xl">
+                                        Find your home away from home in Cameroon
+                                    </h1>
+<h2 class="text-white/90 text-sm md:text-lg font-medium leading-normal drop-shadow-md">
+                                        Short-term rentals verified by CNI, payable via MTN &amp; Orange Money
+                                    </h2>
+</div>
+<!-- Search Bar Complex -->
+<div class="w-full max-w-[800px] bg-[#193319]/90 backdrop-blur-sm border border-[#326732] p-2 rounded-full mt-6 shadow-2xl z-10 hidden md:flex">
+<div class="flex flex-1 items-center px-6 border-r border-[#326732] hover:bg-[#234823] rounded-full transition-colors cursor-pointer group">
+<div class="flex flex-col w-full py-1">
+<label class="text-[10px] uppercase font-bold text-primary tracking-wider">Where</label>
+<input class="bg-transparent border-none p-0 text-white placeholder-text-secondary focus:ring-0 text-sm font-medium w-full truncate" placeholder="Douala, Bastos, Akwa..." type="text"/>
+</div>
+</div>
+<div class="flex w-[160px] items-center px-6 border-r border-[#326732] hover:bg-[#234823] rounded-full transition-colors cursor-pointer">
+<div class="flex flex-col w-full py-1">
+<label class="text-[10px] uppercase font-bold text-primary tracking-wider">Check In</label>
+<span class="text-white text-sm font-medium opacity-70">Add dates</span>
+</div>
+</div>
+<div class="flex w-[160px] items-center px-6 hover:bg-[#234823] rounded-full transition-colors cursor-pointer">
+<div class="flex flex-col w-full py-1">
+<label class="text-[10px] uppercase font-bold text-primary tracking-wider">Check Out</label>
+<span class="text-white text-sm font-medium opacity-70">Add dates</span>
+</div>
+</div>
+<a href="search.html" class="bg-primary hover:bg-primary-dark text-[#112211] rounded-full p-4 flex items-center justify-center transition-transform active:scale-95 ml-2">
+    <span class="material-symbols-outlined font-bold">search</span>
+</a>
+</button>
+</div>
+<!-- Mobile Simple Search -->
+<label class="flex flex-col min-w-40 h-14 w-full max-w-[480px] md:hidden z-10">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full shadow-lg">
+<div class="text-[#92c992] flex border border-[#326732] bg-[#193319] items-center justify-center pl-[15px] rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border border-[#326732] bg-[#193319] focus:border-[#326732] h-full placeholder:text-[#92c992] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal" placeholder="Where to? (e.g., Douala...)"/>
+<div class="flex items-center justify-center rounded-r-lg border-l-0 border border-[#326732] bg-[#193319] pr-[7px]">
+<button onclick="window.location.href='search.html'" class="flex min-w-[80px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#112211] text-sm font-bold">
+    <span>Go</span>
+</button>
+</button>
+</div>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Features Section -->
+<div class="w-full flex justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1 px-4 md:px-10">
+<div class="flex flex-col gap-10 py-10">
+<div class="flex flex-col gap-4">
+<h1 class="text-white tracking-tight text-3xl md:text-4xl font-bold leading-tight max-w-[720px]">
+                                Why SangoStay?
+                            </h1>
+<p class="text-white/80 text-base md:text-lg font-normal leading-normal max-w-[720px]">
+                                Experience the best of Cameroonian hospitality with trusted local standards and secure transactions.
+                            </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="flex flex-col gap-4 rounded-xl border border-[#326732] bg-[#193319]/50 hover:bg-[#193319] transition-colors p-6">
+<div class="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined text-3xl">payments</span>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-white text-xl font-bold leading-tight">Secure Local Payments</h2>
+<p class="text-[#92c992] text-sm leading-relaxed">
+                                        Book instantly and pay securely using <span class="text-white font-medium">MTN Mobile Money</span> and <span class="text-white font-medium">Orange Money</span> directly through the platform.
+                                    </p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col gap-4 rounded-xl border border-[#326732] bg-[#193319]/50 hover:bg-[#193319] transition-colors p-6">
+<div class="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-white text-xl font-bold leading-tight">Verified Identity</h2>
+<p class="text-[#92c992] text-sm leading-relaxed">
+                                        Safety first. All hosts and guests are verified via valid <span class="text-white font-medium">CNI (National ID)</span> to ensure a secure community.
+                                    </p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col gap-4 rounded-xl border border-[#326732] bg-[#193319]/50 hover:bg-[#193319] transition-colors p-6">
+<div class="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined text-3xl">location_on</span>
+</div>
+<div class="flex flex-col gap-2">
+<h2 class="text-white text-xl font-bold leading-tight">Prime Locations</h2>
+<p class="text-[#92c992] text-sm leading-relaxed">
+                                        Find stays near key landmarks like <span class="text-white font-medium">Akwa Palace</span>, <span class="text-white font-medium">Bastos</span>, or the beaches of <span class="text-white font-medium">Kribi</span>.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Cities Section -->
+<div class="w-full flex justify-center py-5 bg-[#162b16]">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1 px-4 md:px-10">
+<div class="flex justify-between items-end pb-6 pt-5">
+<h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em]">Explore by City</h2>
+<a class="text-primary text-sm font-bold hover:underline" href="#">View all cities</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 pb-8">
+<div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-[3/4]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Modern buildings and busy streets of Douala city" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCzSu8mjHXMB3phSR8089LaZOrrpr_l6_WPRyz1fplQnE5wh5AH705UggETqhEkHgw5_JUb9WHyGOW786q4yEHA4r1oDaSKbC5QokeqM_66WZj9dJIJJqdVlLnBnAVvKhGSZlGcBpD2Szn3IMz0Wu1629AOvCni_9gE5ki_q_HGwZpHKkXCl1O5ZTTvTBY0YFjbw5F7gqq4T6PmaKGMMAO-cx-B2HA-69K62HV9S7HUapG-PZfPtTG-AwNwFgU85H5mQwg486ANvbk");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<p class="text-white text-lg font-bold">Douala</p>
+<p class="text-gray-300 text-xs">Economic Capital</p>
+</div>
+</div>
+<div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-[3/4]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Green hilly landscape and monuments of Yaoundé" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCb4-g1SAxx1MLQfYnzY0LkP-9h-qubosyQF_q5_EEzb-k08GwXfmnHTd8I2A7M57tY07c1zsEDDB-sqPxKwkyTytW8aLWqEFqUpNysQXyWhOvV96xmbn65g5B-L_01fCBCKRYwXBX7N0CUyPeLZ0-_pbIdfaQ066OZ9S5jDwE8Nl7im_ufnseQkeH9jxFf81qvM-M81m2oSGoqir86_ND2JbZ5dsE90Ce-oqpX9ku5xSjTOCl0NGAY2KN0MbE2n0ZEUxhCS_7rEk4");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<p class="text-white text-lg font-bold">Yaoundé</p>
+<p class="text-gray-300 text-xs">Political Capital</p>
+</div>
+</div>
+<div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-[3/4]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Beautiful sandy beach with palm trees in Kribi" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCZVRSPkSlNlPN0q9_QC01wYxSryTHG6IOk_-DXHhj3VQhalteszU65XlfiMpwZfLF-To_FHgEzN3_ra_I94XOM7Hfi7Yt5edpdiddWKSApWrPxjxO4fSFXsOBGp88WgIC2tDNirPc8KQFQdJeI2rroqpjolUCROqwOCerx0fDcqMDK0wrnTfNFdHHUkEsZGJsLwObF0lISccQkbnmJzABx06s2r_4-NenyjIZiLvzGHI8oSGuGplvX7Uq-68oeY1sVfV50N3_XdUM");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<p class="text-white text-lg font-bold">Kribi</p>
+<p class="text-gray-300 text-xs">Beach Paradise</p>
+</div>
+</div>
+<div class="group cursor-pointer relative overflow-hidden rounded-xl aspect-[4/5] md:aspect-[3/4]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Mount Cameroon visible behind the town of Buea" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDX8_D3TgPyAYiWQuFAyr5JYPKI5IfQP6oTk22usodR4Vnq5xwwXPhjzZNIAfdtNM5LXL2UtnwEXjMVaOzzlJU_YRLSYnPj7aAPmBY1359lVBb6-0g6V1CfJlvMwwKy79R5bEZZm9p9bLgZGlrbVSIn0v5J6Qh6MF_NUTstg7dx7SUSEcWfwUFEjBXXHYATTtpWgEysL-KJ0bqncoNViTLsJBMwLkFCskjVSYpF4NXBkmX8nQYmENSi_ayhVvqkytco25LWqbhCf58");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4">
+<p class="text-white text-lg font-bold">Buea</p>
+<p class="text-gray-300 text-xs">Mountain Views</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Featured Listings -->
+<div class="w-full flex justify-center py-10">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1 px-4 md:px-10">
+<h2 class="text-white text-2xl md:text-3xl font-bold leading-tight tracking-[-0.015em] mb-6">Popular Stays</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Listing Card 1 -->
+<div class="flex flex-col gap-3 group cursor-pointer">
+<div class="relative aspect-square overflow-hidden rounded-xl bg-gray-800">
+<div class="absolute top-3 left-3 z-10 bg-white/90 backdrop-blur text-[#112211] text-xs font-bold px-2 py-1 rounded">
+                                    Superhost
+                                </div>
+<div class="bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-300" data-alt="Modern apartment interior with living room and balcony" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuByURTbggjgnnU8ypICRJYVBV-N-sJ1bdblzgZ-76M1SnX8KW54BEEoGcpz4wjeJ8iYBRfxviSdxr1yGzAMnXnXWflNzE_RYvPAE9jDgEozXQmLpOhFiTzW4GItZ4OUZpd6ipag3I7p1UTFkqa7Agt6wcRXsG4h3pdSXLAPJVyHB4uweYDp42zYBUrVbym8U5c-CbtY1vOjnmEe7zRjIxdB6QGnwmmVZqAAbD2CJt_-oOfhW1nW2gITUa9e2Y_gL2S0PHLSelK2NxM");'></div>
+<button class="absolute top-3 right-3 p-2 rounded-full bg-black/50 text-white hover:bg-white hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px] leading-none">favorite</span>
+</button>
+</div>
+<div class="flex flex-col">
+<div class="flex justify-between items-start">
+<h3 class="text-white font-bold truncate">Luxury Apt in Bonapriso</h3>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]">star</span>
+<span class="text-white text-sm">4.9</span>
+</div>
+</div>
+<p class="text-gray-400 text-sm">Douala · Near Airport</p>
+<div class="mt-1 flex items-baseline gap-1">
+<span class="text-primary font-bold">25,000 FCFA</span>
+<span class="text-gray-400 text-sm">/ night</span>
+</div>
+</div>
+</div>
+<!-- Listing Card 2 -->
+<div class="flex flex-col gap-3 group cursor-pointer">
+<div class="relative aspect-square overflow-hidden rounded-xl bg-gray-800">
+<div class="bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-300" data-alt="Cozy bedroom with large window overlooking garden" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBVq1qC8yaEwjAKG63DbTZR5KjhFmJcY7Sbjs9AD-IiLgWGQ63qQXyx3Yjs7jUaCFEtyThPQn8RLY224lob44AC6isTvoX0TSIEkilX7egzZFNIniMnDRZkvy1nbrWEhLJ5rPoxjevEjqJtFBTPmHpY2j_iu27Kf6RHuoUbcm6AJOdZ6a_hboZ_lwNwPZdUxSp5GvK7Yc5Ikwdx6L2uagG6hoEuk7YfIwupzJZ4kYdPXEW1FeS8eZdJaFE04ZJNhd6tC4n70zgWM4Q");'></div>
+<button class="absolute top-3 right-3 p-2 rounded-full bg-black/50 text-white hover:bg-white hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px] leading-none">favorite</span>
+</button>
+</div>
+<div class="flex flex-col">
+<div class="flex justify-between items-start">
+<h3 class="text-white font-bold truncate">Cozy Studio Bastos</h3>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]">star</span>
+<span class="text-white text-sm">4.7</span>
+</div>
+</div>
+<p class="text-gray-400 text-sm">Yaoundé · Embassies Area</p>
+<div class="mt-1 flex items-baseline gap-1">
+<span class="text-primary font-bold">18,000 FCFA</span>
+<span class="text-gray-400 text-sm">/ night</span>
+</div>
+</div>
+</div>
+<!-- Listing Card 3 -->
+<div class="flex flex-col gap-3 group cursor-pointer">
+<div class="relative aspect-square overflow-hidden rounded-xl bg-gray-800">
+<div class="absolute top-3 left-3 z-10 bg-primary text-[#112211] text-xs font-bold px-2 py-1 rounded">
+                                    Guest Favorite
+                                </div>
+<div class="bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-300" data-alt="Beachfront villa exterior with pool" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBsiz_R6W4RSMza8O8a1yg-ZPbQmLuzkIaklIcPmeXQ0fliwDaIpkIEVcqJf3WtORq2QhYphhgu0W-OEhHWAJfSJbWuJEKxtvhTXZ6349eV_an9rIUByuD8DCM9nVjHJSgTK8AnTwJMDHeoInn0N700LYZqyryM-djrfCkccj0_D4a_H5pqZ1IN_Ks_c6aQXqJTsitqr4dg09fQHW7DpgCVzvZ8fPD43m2H2EEkb_KvzJENvsazZ1R2q_KY8cLooTTFKlbCjFxcgx4");'></div>
+<button class="absolute top-3 right-3 p-2 rounded-full bg-black/50 text-white hover:bg-white hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px] leading-none">favorite</span>
+</button>
+</div>
+<div class="flex flex-col">
+<div class="flex justify-between items-start">
+<h3 class="text-white font-bold truncate">Kribi Beach Villa</h3>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]">star</span>
+<span class="text-white text-sm">5.0</span>
+</div>
+</div>
+<p class="text-gray-400 text-sm">Kribi · Sea View</p>
+<div class="mt-1 flex items-baseline gap-1">
+<span class="text-primary font-bold">65,000 FCFA</span>
+<span class="text-gray-400 text-sm">/ night</span>
+</div>
+</div>
+</div>
+<!-- Listing Card 4 -->
+<div class="flex flex-col gap-3 group cursor-pointer">
+<div class="relative aspect-square overflow-hidden rounded-xl bg-gray-800">
+<div class="bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-300" data-alt="Bright modern kitchen and dining area" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDnp_FEPGb27_2WJpWTijf3YjHTgeVFnE8ADO3BL5U_QdwmE8v8coU6MmcHwOgSi0_Zt68UGb-Bu3p6RtitspYf39Q0SZSgAJstyNv0RM7pyhLmtSO45IA9jwB8DcaBdOYUrWvpTeGzoYc7JrLNELzCrYwk3iNtykQixV_3ydxljuaK-MpxJ1PojKIMcpsSbcw4lMvFwALJlii7ld_m327s3gSt6k3Cmk8xHuR0eZkG7i5pZRN8Fh9G45xOIuv0QWjYTH1h0dnxj74");'></div>
+<button class="absolute top-3 right-3 p-2 rounded-full bg-black/50 text-white hover:bg-white hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px] leading-none">favorite</span>
+</button>
+</div>
+<div class="flex flex-col">
+<div class="flex justify-between items-start">
+<h3 class="text-white font-bold truncate">Residence La Falaise</h3>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]">star</span>
+<span class="text-white text-sm">4.5</span>
+</div>
+</div>
+<p class="text-gray-400 text-sm">Akwa · City Center</p>
+<div class="mt-1 flex items-baseline gap-1">
+<span class="text-primary font-bold">30,000 FCFA</span>
+<span class="text-gray-400 text-sm">/ night</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="bg-[#0b160b] border-t border-surface-border mt-10">
+<div class="layout-content-container max-w-[1200px] mx-auto px-4 md:px-10 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 text-white">
+<span class="material-symbols-outlined text-primary text-2xl">travel_explore</span>
+<h2 class="text-lg font-bold">SangoStay</h2>
+</div>
+<p class="text-gray-400 text-sm">
+                                The trusted marketplace for short-term rentals in Cameroon. Verified, secure, and local.
+                            </p>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-white font-bold">Support</h3>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Help Center</a>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Safety Information</a>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Cancellation Options</a>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Report Issue</a>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-white font-bold">Hosting</h3>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">SangoStay your home</a>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Host Resources</a>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Community Forum</a>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Hosting Responsibly</a>
+</div>
+<div class="flex flex-col gap-3">
+<h3 class="text-white font-bold">SangoStay</h3>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">About Us</a>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Careers</a>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Investors</a>
+<a class="text-gray-400 hover:text-primary text-sm" href="#">Gift Cards</a>
+</div>
+</div>
+<div class="border-t border-surface-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-gray-500 text-sm">© 2025 SangoStay Inc. All rights reserved.</p>
+<div class="flex gap-4">
+<span class="text-gray-500 text-sm">Privacy</span>
+<span class="text-gray-500 text-sm">Terms</span>
+<span class="text-gray-500 text-sm">Sitemap</span>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+<!-- SangoStay AI Chatbot UI -->
+<div id="chat-container" class="fixed bottom-6 right-6 z-[100] font-display">
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle" class="bg-primary text-background-dark p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
+        <span class="material-symbols-outlined text-3xl">smart_toy</span>
+    </button>
+
+    <!-- Chat Window (Hidden by default) -->
+    <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[350px] md:w-[400px] h-[500px] bg-surface-dark border border-surface-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        <!-- Header -->
+        <div class="bg-primary p-4 flex justify-between items-center">
+            <div class="flex items-center gap-2 text-background-dark">
+                <span class="material-symbols-outlined">travel_explore</span>
+                <span class="font-bold">Sango AI</span>
+            </div>
+            <button id="close-chat" class="text-background-dark font-bold">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 flex flex-col bg-[#112211]">
+            <!-- AI Welcome Message -->
+            <div class="bg-[#234823] text-white p-3 rounded-lg max-w-[80%] self-start text-sm">
+                Mbolo! I am the SangoStay AI. How can I help you find a secure stay in Cameroon today?
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-4 border-t border-surface-border bg-surface-dark flex gap-2">
+            <input type="text" id="user-input" placeholder="Ask about Bastos, MoMo..." class="flex-1 bg-[#112211] border border-surface-border rounded-lg px-3 py-2 text-white text-sm focus:ring-primary focus:border-primary outline-none">
+            <button id="send-btn" class="bg-primary text-background-dark p-2 rounded-lg hover:bg-white transition-colors">
+                <span class="material-symbols-outlined">send</span>
+            </button>
+        </div>
+    </div>
+</div>
+<script src="data.js"></script>
+<script src="config.js"></script>
+<script src="chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SangoStay - Search Results</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#13ec13", "background-light": "#f6f8f6", "background-dark": "#102210", "surface-dark": "#193319", "surface-border": "#234823"}, fontFamily: {display: "Plus Jakarta Sans"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+<style>
+        /* Custom Scrollbar for dark mode */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #102210; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #234823; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #13ec13; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-x-hidden">
+<div class="flex min-h-screen flex-col">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-surface-border bg-background-dark/95 backdrop-blur-sm px-6 py-4 lg:px-10">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3 text-white transition-opacity hover:opacity-80" href="#">
+<a href="index.html" class="flex items-center gap-2 text-white cursor-pointer">
+    <span class="material-symbols-outlined text-primary text-3xl">travel_explore</span>
+    <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">SangoStay</h2>
+</a>
+</a>
+<!-- Expanded Desktop Search Bar -->
+<div class="hidden lg:flex items-center rounded-full border border-surface-border bg-[#152915] p-1 pr-2 shadow-sm transition-all hover:border-surface-border/50 hover:bg-[#1a301a]">
+<div class="flex items-center border-r border-surface-border px-4 py-2">
+<label class="text-xs font-bold text-white">Location</label>
+<input class="ml-2 w-24 bg-transparent p-0 text-sm text-[#92c992] placeholder-[#92c992]/50 focus:ring-0 border-none" placeholder="Yaoundé" type="text"/>
+</div>
+<div class="flex items-center border-r border-surface-border px-4 py-2">
+<label class="text-xs font-bold text-white">Check-in</label>
+<input class="ml-2 w-24 bg-transparent p-0 text-sm text-[#92c992] placeholder-[#92c992]/50 focus:ring-0 border-none" placeholder="Add dates" type="text"/>
+</div>
+<div class="flex items-center pl-4 py-2">
+<label class="text-xs font-bold text-white">Guests</label>
+<input class="ml-2 w-20 bg-transparent p-0 text-sm text-[#92c992] placeholder-[#92c992]/50 focus:ring-0 border-none" placeholder="Add guests" type="text"/>
+</div>
+<button class="ml-2 flex size-10 items-center justify-center rounded-full bg-primary text-background-dark transition-transform hover:scale-105">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-white/80 hover:text-primary transition-colors" href="#">Stays</a>
+<a class="text-sm font-medium text-white/80 hover:text-primary transition-colors" href="#">Experiences</a>
+<a class="text-sm font-medium text-white/80 hover:text-primary transition-colors" href="#">Host with us</a>
+</nav>
+<div class="flex items-center gap-3 pl-4 border-l border-surface-border">
+<button class="flex items-center gap-2 rounded-full border border-surface-border bg-surface-dark px-3 py-2 text-white hover:bg-surface-border transition-colors">
+<span class="material-symbols-outlined text-xl">menu</span>
+<div class="h-8 w-8 overflow-hidden rounded-full bg-surface-border relative">
+<img alt="User avatar profile picture" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg_J-an12duNIqV3zTXkMlQsokIShynLBqMs1LDB7SgrFiMPDQ7lNRpEMY3jEw1U3EFu_bkQQ7zC6KWMmG7ekLI_2OTgnLLnQHuPh3zSndkd1w0wKbY420dti7se5g2kmdI8pngf0r5QOqTpQJUGzrezu_PA7JxQj-8MPruXihBrSmcMf3pTp-RxnWYEq744FK6jog3XdD4GZflX1tEarK7fkwddpWIRWBanjbo7jN0DuBjXJfrdhjallNTYMEvY1SgtNxcMWEfkI"/>
+</div>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Layout -->
+<main class="flex flex-1 flex-col lg:flex-row">
+<!-- Filters Sidebar (Sticky on Desktop) -->
+<aside class="w-full lg:w-80 lg:min-w-[320px] border-b lg:border-b-0 lg:border-r border-surface-border bg-background-dark p-6 lg:sticky lg:top-[80px] lg:h-[calc(100vh-80px)] lg:overflow-y-auto">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold text-white">Filters</h3>
+<button class="text-sm font-medium text-[#92c992] hover:text-primary">Reset all</button>
+</div>
+<!-- Price Range -->
+<div class="mb-8 border-b border-surface-border pb-6">
+<h4 class="mb-4 text-sm font-bold text-white uppercase tracking-wider">Price Range (FCFA)</h4>
+<input type="range" min="10000" max="150000" step="5000" class="w-full h-1.5 bg-surface-dark rounded-lg appearance-none cursor-pointer accent-primary mb-4">
+<div class="flex items-center justify-between text-sm text-[#92c992]">
+<span>10k</span>
+<span>150k+</span>
+</div>
+</div>
+<!-- Popular Landmarks -->
+<div class="mb-8 border-b border-surface-border pb-6">
+<h4 class="mb-4 text-sm font-bold text-white uppercase tracking-wider">Landmarks</h4>
+<div class="flex flex-col gap-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="h-5 w-5 rounded border-surface-border bg-surface-dark text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/>
+<span class="text-sm text-white/80 group-hover:text-white">Blvd of the 20th May</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="h-5 w-5 rounded border-surface-border bg-surface-dark text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/>
+<span class="text-sm text-white/80 group-hover:text-white">Bastos</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="h-5 w-5 rounded border-surface-border bg-surface-dark text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/>
+<span class="text-sm text-white/80 group-hover:text-white">Bonanjo</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="h-5 w-5 rounded border-surface-border bg-surface-dark text-primary focus:ring-primary focus:ring-offset-background-dark" type="checkbox"/>
+<span class="text-sm text-white/80 group-hover:text-white">Central Market</span>
+</label>
+</div>
+</div>
+<!-- Verification -->
+<div class="mb-8 border-b border-surface-border pb-6">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-bold text-white flex items-center gap-2">
+                                CNI Verified
+                                <span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+</span>
+<span class="text-xs text-[#92c992]">Show only verified hosts</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+    <input type="checkbox" class="sr-only peer" checked>
+    <div class="w-12 h-6 bg-surface-dark rounded-full peer 
+        peer-checked:after:translate-x-6 
+        after:content-[''] after:absolute after:top-[4px] after:left-[4px] 
+        after:bg-primary after:rounded-full after:h-4 after:w-4 
+        after:transition-all border border-surface-border 
+        peer-checked:bg-primary/20">
+    </div>
+</label>
+</div>
+</div>
+<!-- Amenities -->
+<div class="mb-8">
+<h4 class="mb-4 text-sm font-bold text-white uppercase tracking-wider">Amenities</h4>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="h-4 w-4 rounded border-surface-border bg-surface-dark text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm text-white/80">Generator</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="h-4 w-4 rounded border-surface-border bg-surface-dark text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm text-white/80">AC</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="h-4 w-4 rounded border-surface-border bg-surface-dark text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm text-white/80">Wifi</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input class="h-4 w-4 rounded border-surface-border bg-surface-dark text-primary focus:ring-0" type="checkbox"/>
+<span class="text-sm text-white/80">Pool</span>
+</label>
+</div>
+</div>
+</aside>
+<!-- Results Grid -->
+<section class="flex-1 p-6 lg:p-10">
+<div class="mx-auto max-w-[1400px]">
+<!-- Header & Sort -->
+<div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+<div>
+<p class="text-sm font-medium text-[#92c992]">Yaoundé, Cameroon • Oct 12 - 19</p>
+<h1 class="mt-1 text-3xl font-bold leading-tight text-white">24 Stays found in Yaoundé</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-sm text-white/70">Sort by:</span>
+<button class="flex items-center gap-2 rounded-lg bg-surface-dark px-4 py-2 text-sm font-medium text-white hover:bg-surface-border transition-colors">
+                                Recommended
+                                <span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+<!-- Map Toggle Button (Mobile/Tablet visible, could be sticky) -->
+<button class="ml-2 flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-bold text-background-dark shadow-lg shadow-primary/20 hover:bg-[#10d010] transition-colors">
+                                Show Map
+                                <span class="material-symbols-outlined text-lg font-bold">map</span>
+</button>
+</div>
+</div>
+<!-- Filter Chips (Quick access) -->
+<div class="mb-8 flex flex-wrap gap-2">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full border border-surface-border bg-transparent px-4 text-sm text-white hover:border-primary/50 transition-colors">
+<span>Mobile Money Accepted</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full border border-surface-border bg-transparent px-4 text-sm text-white hover:border-primary/50 transition-colors">
+<span>Instant Book</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full border border-surface-border bg-transparent px-4 text-sm text-white hover:border-primary/50 transition-colors">
+<span>Free Cancellation</span>
+</button>
+</div>
+<!-- Listing Grid -->
+<div id="listings-container" class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+</div>
+<!-- Card 1 
+<div class="group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark shadow-md transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5">
+<div class="relative aspect-[4/3] w-full overflow-hidden">
+<div class="absolute right-3 top-3 z-10 rounded-full bg-black/40 p-1.5 text-white backdrop-blur-sm transition-colors hover:bg-red-500/80 cursor-pointer">
+<span class="material-symbols-outlined block text-xl">favorite</span>
+</div>
+<div class="absolute left-3 top-3 z-10 flex gap-2">
+<span class="inline-flex items-center gap-1 rounded bg-background-dark/80 px-2 py-1 text-xs font-bold text-primary backdrop-blur-md">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+                                        CNI Verified
+                                    </span>
+</div>
+<img alt="Modern bright apartment living room" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Modern bright apartment living room with colorful furniture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKIZ1RMTkGg6LeYATFAy4EStlX4L42K6SNgN6-PNl224CTJBfegzSILG2aeAJRTo_d9-zkELs_VeqjXuzW4TJ5BLEvgP78bPJLlHq5laicQYdUZJv8MhJJ_d7YVgDt5cIOC48PH4blwQbQwFvSgdcLd0XFN0bhCXnfr5bQgSrMUXqeREjX0H8PxVOCbh5eh-t-E8t-NdkvVnDR0iSkm_bljvq76CHZL4haR54C6gGdG_2a6szK-4v5DVTOZ5DTh-FFU9f9JY-TCFA"/>
+</div>
+<div class="flex flex-1 flex-col p-4">
+<div class="mb-1 flex items-center justify-between">
+<h3 class="text-lg font-bold text-white line-clamp-1">Modern Studio in Bastos</h3>
+<div class="flex items-center gap-1 text-white">
+<span class="material-symbols-outlined text-primary text-sm filled">star</span>
+<span class="text-sm font-bold">4.92</span>
+</div>
+</div>
+<p class="mb-2 text-sm text-[#92c992]">0.5km from Embassy Row</p>
+<div class="mb-4 flex flex-wrap gap-2 text-xs text-white/60">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">wifi</span> Wifi</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">bolt</span> Generator</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">ac_unit</span> AC</span>
+</div>
+<div class="mt-auto flex items-end justify-between border-t border-surface-border pt-4">
+<div>
+<p class="text-lg font-bold text-primary">25,000 FCFA <span class="text-sm font-normal text-white/60">/ night</span></p>
+<div class="mt-1 flex items-center gap-1 text-[10px] text-white/50 uppercase tracking-wide">
+<span class="material-symbols-outlined text-sm">payments</span>
+                                            MTN &amp; Orange Money
+                                        </div>
+</div>
+<a href="Sango P3.html" class="rounded-lg bg-primary px-4 py-2 text-sm font-bold text-background-dark transition-colors hover:bg-white text-center">
+    View
+</a>
+</div>
+</div>
+</div>
+-- Pagination (Simple) -->
+<div class="mt-12 flex justify-center pb-12">
+<nav class="flex items-center gap-2">
+<button class="flex size-10 items-center justify-center rounded-lg border border-surface-border bg-surface-dark text-white hover:bg-surface-border disabled:opacity-50">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-lg bg-primary text-background-dark font-bold hover:bg-white">1</button>
+<button class="flex size-10 items-center justify-center rounded-lg border border-surface-border bg-surface-dark text-white hover:bg-surface-border">2</button>
+<button class="flex size-10 items-center justify-center rounded-lg border border-surface-border bg-surface-dark text-white hover:bg-surface-border">3</button>
+<span class="text-white">...</span>
+<button class="flex size-10 items-center justify-center rounded-lg border border-surface-border bg-surface-dark text-white hover:bg-surface-border">8</button>
+<button class="flex size-10 items-center justify-center rounded-lg border border-surface-border bg-surface-dark text-white hover:bg-surface-border disabled:opacity-50">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body>
+<!-- SangoStay AI Chatbot UI -->
+<div id="chat-container" class="fixed bottom-6 right-6 z-[100] font-display">
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle" class="bg-primary text-background-dark p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
+        <span class="material-symbols-outlined text-3xl">smart_toy</span>
+    </button>
+
+    <!-- Chat Window (Hidden by default) -->
+    <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[350px] md:w-[400px] h-[500px] bg-surface-dark border border-surface-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        <!-- Header -->
+        <div class="bg-primary p-4 flex justify-between items-center">
+            <div class="flex items-center gap-2 text-background-dark">
+                <span class="material-symbols-outlined">travel_explore</span>
+                <span class="font-bold">Sango AI</span>
+            </div>
+            <button id="close-chat" class="text-background-dark font-bold">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 flex flex-col bg-[#112211]">
+            <!-- AI Welcome Message -->
+            <div class="bg-[#234823] text-white p-3 rounded-lg max-w-[80%] self-start text-sm">
+                Mbolo! I am the SangoStay AI. How can I help you find a secure stay in Cameroon today?
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-4 border-t border-surface-border bg-surface-dark flex gap-2">
+            <input type="text" id="user-input" placeholder="Ask about Bastos, MoMo..." class="flex-1 bg-[#112211] border border-surface-border rounded-lg px-3 py-2 text-white text-sm focus:ring-primary focus:border-primary outline-none">
+            <button id="send-btn" class="bg-primary text-background-dark p-2 rounded-lg hover:bg-white transition-colors">
+                <span class="material-symbols-outlined">send</span>
+            </button>
+        </div>
+    </div>
+</div>
+<script src="data.js"></script>
+<script src="display-listing.js"></script>
+<script>
+    const listingsContainer = document.getElementById('listings-container');
+
+    function displayProperties() {
+        if (!listingsContainer) return; // Safety check
+        
+        listingsContainer.innerHTML = ""; // Clear the container
+        
+        properties.forEach(house => {
+        listingsContainer.innerHTML += `
+        <div class="group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark shadow-md">
+            <div class="relative aspect-[4/3] w-full overflow-hidden">
+                <img src="${house.image}" class="h-full w-full object-cover">
+            </div>
+            <div class="p-4">
+                <h3 class="text-lg font-bold text-white">${house.name}</h3>
+                <p class="text-sm text-[#92c992]">${house.landmark}</p>
+                <div class="mt-4 flex items-end justify-between">
+                    <p class="text-lg font-bold text-primary">${house.price.toLocaleString()} FCFA</p>
+                    <button onclick="window.location.href='details.html'" class="rounded-lg bg-primary px-4 py-2 text-sm font-bold text-background-dark">View</button>
+                </div>
+            </div>
+        </div>
+        `;
+    });
+    }
+
+    // Run the function
+    displayProperties();
+</script>
+<script src="config.js"></script>
+<script src="chat.js"></script>
+    <script>
+	function selectProperty(propertyId) {
+    // Save the ID to the browser's memory
+    localStorage.setItem('selectedPropertyId', propertyId);
+    // Go to the details page
+    window.location.href = "details.html";
+}
+</script>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SangoStay - Host Verification</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#13ec13", "background-light": "#f6f8f6", "background-dark": "#102210", "surface-dark": "#193319", "border-dark": "#326732", "text-secondary": "#92c992"}, fontFamily: {display: "Plus Jakarta Sans"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+</head>
+<body class="bg-background-dark text-white font-display overflow-x-hidden min-h-screen flex flex-col">
+<!-- Navbar -->
+<header class="w-full border-b border-solid border-border-dark bg-[#112211] sticky top-0 z-50">
+<div class="max-w-[1440px] mx-auto px-4 sm:px-10 py-3 flex items-center justify-between">
+<div class="flex items-center gap-4 text-white">
+<a href="index.html" class="size-8 flex items-center justify-center text-primary cursor-pointer">
+    <span class="material-symbols-outlined text-primary text-3xl">travel_explore</span>
+    <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">SangoStay</h2>
+</a>
+<div class="flex items-center gap-4 sm:gap-8">
+<button class="flex items-center gap-2 cursor-pointer rounded-lg h-10 px-4 hover:bg-surface-dark transition-colors text-white text-sm font-bold">
+<span class="truncate">Help</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-border-dark" data-alt="User profile picture placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtNrPNobESDaZFTcHskXhDHlzJ7UVzEpSg7h58w374tUZYtBVBdXLIHpAlYTgTMvVhjsb8MVCJhuPJA0gfMPCGfUamQ2yTnrryKLRDMhVMvSkMk9p-K8swgJoA_lnv0sOoCHwTOXZ_laOruT58Q0_VZ_K6VlLDSpsuzXvgzUjjvHT6abbaILtfZTBTrxUGy55P4osOZ3iyQcLSSMrD8h5Jm2vOfiRCvDJKQY0Ph_3FfViwQxuoTaV3QaLXvIDg-9mPkJLQMgcvnIE");'></div>
+<button class="hidden sm:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-surface-dark hover:bg-border-dark transition-colors text-primary text-sm font-bold border border-border-dark">
+<span class="truncate">Log Out</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex justify-center py-8 px-4 sm:px-6 lg:px-8">
+<div class="w-full max-w-[1100px] flex flex-col gap-8">
+<!-- Page Heading & Progress -->
+<div class="flex flex-col gap-6">
+<div class="flex flex-wrap justify-between items-end gap-4 border-b border-border-dark pb-6">
+<div class="flex flex-col gap-2 max-w-2xl">
+<h1 class="text-white text-3xl sm:text-4xl font-black leading-tight tracking-tight">Verify Your Host Account</h1>
+<p class="text-text-secondary text-base font-normal leading-relaxed">To ensure safety on SangoStay and process your earnings via Mobile Money, we need to confirm your identity.</p>
+</div>
+<div class="flex flex-col gap-2 min-w-[200px] w-full sm:w-auto">
+<div class="flex gap-6 justify-between items-center">
+<p class="text-white text-sm font-medium">Progress</p>
+<p class="text-primary text-sm font-bold">50%</p>
+</div>
+<div class="h-2 rounded-full bg-surface-dark w-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 50%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Two Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Forms -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Step 1: Identity Verification -->
+<section class="bg-surface-dark/30 rounded-xl border border-border-dark p-6 sm:p-8">
+<div class="flex items-center gap-3 mb-6">
+<div class="size-8 rounded-full bg-primary text-[#112211] flex items-center justify-center font-bold text-lg">1</div>
+<h3 class="text-white text-xl font-bold">Identity Verification</h3>
+</div>
+<!-- Form Inputs -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<label class="flex flex-col gap-2">
+<span class="text-white text-sm font-medium">Full Name (as on CNI)</span>
+<input class="form-input w-full rounded-lg border border-border-dark bg-[#112211] focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4 text-white placeholder:text-text-secondary/50 text-base" placeholder="e.g. Samuel Eto'o" type="text"/>
+</label>
+<label class="flex flex-col gap-2">
+<span class="text-white text-sm font-medium">CNI Number</span>
+<input class="form-input w-full rounded-lg border border-border-dark bg-[#112211] focus:border-primary focus:ring-1 focus:ring-primary h-12 px-4 text-white placeholder:text-text-secondary/50 text-base" placeholder="e.g. 1122334455" type="text"/>
+</label>
+</div>
+<!-- Upload Area -->
+<div class="flex flex-col gap-4">
+<p class="text-white text-sm font-medium">Upload Photos of National ID (CNI)</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Front -->
+<div class="relative group cursor-pointer">
+<input class="absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer" type="file"/>
+<div class="flex flex-col items-center justify-center gap-3 h-48 rounded-lg border-2 border-dashed border-border-dark bg-[#112211] group-hover:border-primary/50 group-hover:bg-surface-dark transition-all">
+<div class="size-10 rounded-full bg-surface-dark flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add_a_photo</span>
+</div>
+<div class="text-center px-4">
+<p class="text-white font-medium text-sm">Front of CNI</p>
+<p class="text-text-secondary text-xs mt-1">JPG or PNG, max 5MB</p>
+</div>
+</div>
+</div>
+<!-- Back -->
+<div class="relative group cursor-pointer">
+<input class="absolute inset-0 w-full h-full opacity-0 z-10 cursor-pointer" type="file"/>
+<div class="flex flex-col items-center justify-center gap-3 h-48 rounded-lg border-2 border-dashed border-border-dark bg-[#112211] group-hover:border-primary/50 group-hover:bg-surface-dark transition-all">
+<div class="size-10 rounded-full bg-surface-dark flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add_a_photo</span>
+</div>
+<div class="text-center px-4">
+<p class="text-white font-medium text-sm">Back of CNI</p>
+<p class="text-text-secondary text-xs mt-1">JPG or PNG, max 5MB</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 2: Payment Method -->
+<section class="bg-surface-dark/30 rounded-xl border border-border-dark p-6 sm:p-8">
+<div class="flex items-center gap-3 mb-6">
+<div class="size-8 rounded-full bg-primary text-[#112211] flex items-center justify-center font-bold text-lg">2</div>
+<h3 class="text-white text-xl font-bold">Link Payout Method</h3>
+</div>
+<div class="mb-6 p-4 rounded-lg bg-[#3a2e15]/40 border border-[#b8860b]/30 flex gap-3 items-start">
+<span class="material-symbols-outlined text-[#ffd700] mt-0.5">warning</span>
+<div class="flex-1">
+<p class="text-[#ffd700] text-sm font-bold">Important Name Match Requirement</p>
+<p class="text-[#ffd700]/80 text-sm mt-1">The name on your Mobile Money account MUST match the name on your CNI provided above.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<p class="text-white text-sm font-medium">Select Provider</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- MTN -->
+<label class="relative cursor-pointer">
+<input checked="" class="peer sr-only" name="provider" type="radio"/>
+<div class="flex items-center gap-4 p-4 rounded-lg border border-border-dark bg-[#112211] peer-checked:border-[#ffcc00] peer-checked:bg-[#ffcc00]/10 hover:bg-surface-dark transition-all h-20">
+<div class="size-10 rounded bg-[#ffcc00] flex items-center justify-center text-black font-bold text-xs shrink-0">MTN</div>
+<div class="flex flex-col">
+<span class="text-white font-bold">MTN Mobile Money</span>
+<span class="text-text-secondary text-xs">Instant transfers</span>
+</div>
+<div class="ml-auto opacity-0 peer-checked:opacity-100 text-[#ffcc00]">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+</div>
+</label>
+<!-- Orange -->
+<label class="relative cursor-pointer">
+<input class="peer sr-only" name="provider" type="radio"/>
+<div class="flex items-center gap-4 p-4 rounded-lg border border-border-dark bg-[#112211] peer-checked:border-[#ff7900] peer-checked:bg-[#ff7900]/10 hover:bg-surface-dark transition-all h-20">
+<div class="size-10 rounded bg-[#ff7900] flex items-center justify-center text-white font-bold text-xs shrink-0">OM</div>
+<div class="flex flex-col">
+<span class="text-white font-bold">Orange Money</span>
+<span class="text-text-secondary text-xs">Instant transfers</span>
+</div>
+<div class="ml-auto opacity-0 peer-checked:opacity-100 text-[#ff7900]">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+<div class="mt-6">
+<label class="flex flex-col gap-2">
+<span class="text-white text-sm font-medium">Mobile Money Number</span>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+<span class="text-text-secondary font-medium">+237</span>
+</div>
+<input class="form-input w-full rounded-lg border border-border-dark bg-[#112211] focus:border-primary focus:ring-1 focus:ring-primary h-12 pl-16 pr-4 text-white placeholder:text-text-secondary/50 text-base" placeholder="6xx-xx-xx-xx" type="tel"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-4 text-primary opacity-0 hover:opacity-100 transition-opacity cursor-help" title="Account verified">
+<span class="material-symbols-outlined">verified</span>
+</div>
+</div>
+</label>
+</div>
+</section>
+<!-- Action Buttons -->
+<div class="flex flex-col-reverse sm:flex-row gap-4 pt-4">
+<button class="flex-1 h-12 rounded-lg border border-border-dark bg-transparent text-white font-bold hover:bg-surface-dark transition-colors">
+                            Save as Draft
+                        </button>
+<button class="flex-[2] h-12 rounded-lg bg-primary text-[#112211] font-bold text-lg hover:bg-[#0fd60f] transition-colors shadow-[0_0_15px_rgba(19,236,19,0.3)] flex items-center justify-center gap-2">
+<span>Submit for Verification</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Info & Trust -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Context Card -->
+<div class="relative overflow-hidden rounded-xl border border-border-dark h-64 group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Abstract view of Mount Cameroon with dark overlay" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2fV-ozsYjjYUGQ54ME5T_Ct1Zko2BWC2-8qRdW7u02GDoLv32bU1lE3J_jZevXzKYQ4lZQ3sFmVyahRArkETvwT2dOwTbLhxW_w-wmHJjMuCwM7LPaIggIRZpGsDvDtXtYD50JY3qoW-dX7U_bQ1tqbwko2qmCiaN2MGXvVaFoBRZU9bWlTvjyJYE9aWBdum8lqgP2jaxgHgzm4qAxOkWnfRd8CUHnEuTHxL7WodECkbQ_mx_ta5uXdd_87NRTEWeyUvmUTOUJyA");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#112211] via-[#112211]/80 to-transparent"></div>
+<div class="absolute bottom-0 p-6 flex flex-col gap-2">
+<h4 class="text-white font-bold text-lg">Proudly Cameroonian 🇨🇲</h4>
+<p class="text-text-secondary text-sm leading-relaxed">SangoStay connects local hosts with global travelers. Your verification helps build a trusted community from Douala to Yaoundé.</p>
+</div>
+</div>
+<!-- Safety Info -->
+<div class="bg-surface-dark/30 rounded-xl border border-border-dark p-6">
+<div class="flex items-center gap-3 mb-4 text-primary">
+<span class="material-symbols-outlined">shield</span>
+<h4 class="text-white font-bold">Why verify?</h4>
+</div>
+<ul class="flex flex-col gap-4">
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-text-secondary text-sm mt-0.5">check</span>
+<p class="text-text-secondary text-sm">Prevents fraud and ensures payouts go to the right person.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-text-secondary text-sm mt-0.5">check</span>
+<p class="text-text-secondary text-sm">Increases booking rates by showing the "Verified Host" badge.</p>
+</li>
+<li class="flex gap-3 items-start">
+<span class="material-symbols-outlined text-text-secondary text-sm mt-0.5">lock</span>
+<p class="text-text-secondary text-sm">Your ID is encrypted and never shared with guests.</p>
+</li>
+</ul>
+</div>
+<!-- Help Contact -->
+<div class="bg-surface-dark/30 rounded-xl border border-border-dark p-6">
+<h4 class="text-white font-bold mb-2">Need help?</h4>
+<p class="text-text-secondary text-sm mb-4">Having trouble with your CNI upload or linking Mobile Money?</p>
+<a class="text-primary text-sm font-bold flex items-center gap-1 hover:underline" href="#">
+                            Contact Support <span class="material-symbols-outlined text-base">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="border-t border-border-dark bg-[#112211] py-8 mt-12">
+<div class="max-w-[1440px] mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-text-secondary">
+<p>© 2025 SangoStay. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+<!-- SangoStay AI Chatbot UI -->
+<div id="chat-container" class="fixed bottom-6 right-6 z-[100] font-display">
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle" class="bg-primary text-background-dark p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center">
+        <span class="material-symbols-outlined text-3xl">smart_toy</span>
+    </button>
+
+    <!-- Chat Window (Hidden by default) -->
+    <div id="chat-window" class="hidden absolute bottom-20 right-0 w-[350px] md:w-[400px] h-[500px] bg-surface-dark border border-surface-border rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+        <!-- Header -->
+        <div class="bg-primary p-4 flex justify-between items-center">
+            <div class="flex items-center gap-2 text-background-dark">
+                <span class="material-symbols-outlined">travel_explore</span>
+                <span class="font-bold">Sango AI</span>
+            </div>
+            <button id="close-chat" class="text-background-dark font-bold">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4 flex flex-col bg-[#112211]">
+            <!-- AI Welcome Message -->
+            <div class="bg-[#234823] text-white p-3 rounded-lg max-w-[80%] self-start text-sm">
+                Mbolo! I am the SangoStay AI. How can I help you find a secure stay in Cameroon today?
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-4 border-t border-surface-border bg-surface-dark flex gap-2">
+            <input type="text" id="user-input" placeholder="Ask about Bastos, MoMo..." class="flex-1 bg-[#112211] border border-surface-border rounded-lg px-3 py-2 text-white text-sm focus:ring-primary focus:border-primary outline-none">
+            <button id="send-btn" class="bg-primary text-background-dark p-2 rounded-lg hover:bg-white transition-colors">
+                <span class="material-symbols-outlined">send</span>
+            </button>
+        </div>
+    </div>
+</div>
+<script src="data.js"></script>
+<script src="config.js"></script>
+<script src="chat.js"></script>
+</body></html>
