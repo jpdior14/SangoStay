@@ -123,12 +123,47 @@
 </div>
 </div>
 <button onclick="handlePayment()" class="w-full bg-primary hover:bg-primary-dark text-background-dark font-bold text-lg py-3.5 rounded-lg shadow-[0_4px_14px_0_rgba(19,236,19,0.39)] transition-all transform active:scale-[0.98] flex items-center justify-center gap-2">
-    <span>Pay 105,000 XAF</span>
+    <span id="pay-btn-text">Pay Now</span>
 	<span class="material-symbols-outlined">arrow_forward</span>
 </button>
 
 <script>
-function handlePayment() {
+    // --- NEW CODE: LOAD DATA FROM STORAGE ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Retrieve the data we saved in details.html
+        const booking = JSON.parse(localStorage.getItem('currentBooking'));
+
+        // 2. If data exists, update the page
+        if (booking) {
+            // Update Image
+            // We check if it's a URL or a CSS background string. 
+            // If it comes from details.html as 'url("...")', we clean it.
+            let cleanImage = booking.image;
+            if (cleanImage.includes('url("')) {
+                cleanImage = cleanImage.replace('url("', '').replace('")', '');
+            }
+            document.getElementById('pay-img').src = cleanImage;
+
+            // Update Name & Location
+            document.getElementById('pay-name').innerText = booking.name;
+            // We handle the location text carefully to keep the icon
+            document.getElementById('pay-loc').innerHTML = `
+                <span class="material-symbols-outlined text-sm">location_on</span>
+                ${booking.location}
+            `;
+
+            // Update Math (Price x Nights)
+            // Note: In Step 1.1 we hardcoded nights to 3. In a full app, this is dynamic.
+            const totalCost = booking.pricePerNight * booking.nights;
+            
+            // Update Total Price Display
+            document.getElementById('pay-total').innerText = totalCost.toLocaleString();
+
+            // Update Button Text
+            document.getElementById('pay-btn-text').innerText = "Pay " + totalCost.toLocaleString() + " XAF";
+        }
+    });
+	function handlePayment() {
     // 1. Simulate the MoMo Push
     alert("SangoStay: Payment request sent to your phone. Please enter your PIN.");
     
@@ -173,7 +208,7 @@ function handlePayment() {
 <div class="h-48 w-full relative bg-gray-800" data-alt="Modern villa in Yaounde with lush garden and pool">
 <!-- Abstract Gradient Pattern for Image -->
 <div class="absolute inset-0 bg-gradient-to-br from-[#1e3a1e] to-[#112211] opacity-80"></div>
-<img alt="Villa des Fleurs Exterior" class="w-full h-full object-cover opacity-80" data-alt="Exterior of a modern villa with tropical plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWpc1GT04iWd6UrRhR0lwcuziPGdccw6rVMDACLxiZs1h96EgzAIwOht0BME0Qp9rBXIU6FKMztG3lJSgw2CCH0NQGf2_lOIOQuzheEw_mtOyRPjnI2XFgQ5sk5Q5v-yIOlxjmAaKu1j7_PoghKKpOP_EysxX_tT9rvBiFJwv-D4jlhl24_pgCJ8GVAdmLserJZ4jBwGlz6gloMKEyqG8b7GuHUzUJKTNK835kqseQEKkI-8H0_AHCR0NuGxJIDB-Z3maAsCZWW4Q"/>
+<img id="pay-img" alt="Property Image" class="w-full h-full object-cover opacity-80" src=""/>
 <div class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-surface-dark to-transparent"></div>
 <div class="absolute bottom-4 left-4">
 <span class="bg-primary text-background-dark text-xs font-bold px-2 py-1 rounded">Superhost</span>
@@ -181,11 +216,10 @@ function handlePayment() {
 </div>
 <div class="p-5 flex flex-col gap-5">
 <div>
-<h3 class="text-xl font-bold text-white mb-1">Villa des Fleurs</h3>
-<div class="flex items-center gap-1 text-text-muted text-sm">
-<span class="material-symbols-outlined text-sm">location_on</span>
-                                Bonapriso, Douala
-                            </div>
+<h3 id="pay-name" class="text-xl font-bold text-white mb-1">Loading...</h3>
+<div id="pay-loc" class="flex items-center gap-1 text-text-muted text-sm">
+    <span class="material-symbols-outlined text-sm">location_on</span>
+    Loading location...
 </div>
 <!-- Details Grid -->
 <div class="grid grid-cols-2 gap-3">
@@ -222,7 +256,7 @@ function handlePayment() {
 <div class="h-[1px] bg-border-green w-full my-2"></div>
 <div class="flex justify-between items-center text-white">
 <span class="font-bold">Total (XAF)</span>
-<span class="font-extrabold text-xl text-primary">105,000</span>
+<span id="pay-btn-text">Pay Now</span>
 </div>
 </div>
 </div>
@@ -299,4 +333,5 @@ function handlePayment() {
 <script src="data.js"></script>
 <script src="config.js"></script>
 <script src="chat.js"></script>
+
 </body></html>
