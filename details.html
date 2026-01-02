@@ -234,7 +234,8 @@
 </div>
 </div>
 <!-- Desktop Sidebar Button -->
-<button onclick="window.location.href='payment.html'" class="block w-full bg-primary hover:bg-primary/90 text-[#112211] font-bold py-3.5 rounded-lg text-lg mb-4 transition text-center shadow-lg shadow-primary/20">
+<!-- We changed the onclick to run our function instead of just jumping pages -->
+<button onclick="proceedToPayment()" class="block w-full bg-primary hover:bg-primary/90 text-[#112211] font-bold py-3.5 rounded-lg text-lg mb-4 transition text-center shadow-lg shadow-primary/20">
     Book Now
 </button>
 <div class="flex justify-center items-center gap-3 mb-4 opacity-80">
@@ -449,25 +450,53 @@
 <script src="data.js"></script>
 <script src="config.js"></script>
 <script src="chat.js"></script>
-    <script>
-        // 1. Get the ID from memory (saved when you clicked 'View' on P2)
-        const selectedId = localStorage.getItem('selectedPropertyId');
+        <script>
+        // --- EXISTING CODE STARTS HERE ---
+        // 1. Get the ID from memory
+    const selectedId = localStorage.getItem('selectedPropertyId');
 
-        // 2. Find that property in our data.js
-        const property = properties.find(p => p.id === selectedId);
+    // 2. Find that property in our data.js
+    const property = properties.find(p => p.id === selectedId);
 
-        // 3. Inject the data into the page
-        if (property) {
-            document.getElementById('prop-name').innerText = property.name;
-            document.getElementById('prop-price').innerText = property.price.toLocaleString() + " XAF";
-            document.getElementById('prop-host').innerText = "Hosted by " + property.host;
-            
-            // Update the background image of the div
-            document.getElementById('prop-img').style.backgroundImage = `url('${property.image}')`;
-        } else {
-            // Fallback if someone opens P3 without clicking P2
-            document.getElementById('prop-name').innerText = "Select a property from the search page";
+    // 3. Inject the data into the page
+    if (property) {
+        document.getElementById('prop-name').innerText = property.name;
+        document.getElementById('prop-price').innerText = property.price.toLocaleString() + " XAF";
+        document.getElementById('prop-host').innerText = "Hosted by " + property.host;
+        
+        // Update the background image of the div
+        document.getElementById('prop-img').style.backgroundImage = `url('${property.image}')`;
+    } else {
+        document.getElementById('prop-name').innerText = "Select a property from the search page";
+    }
+    // --- EXISTING CODE ENDS HERE ---
+
+
+    // --- NEW CODE FOR STEP 1.1 STARTS HERE ---
+    function proceedToPayment() {
+        // 1. Check if we actually have a property loaded
+        if (!property) {
+            alert("Error: No property selected. Please go back to search.");
+            return;
         }
-    </script>
+
+        // 2. Create a booking object with the current house details
+        const bookingData = {
+            name: property.name,
+            pricePerNight: property.price,
+            image: property.image,
+            location: property.location,
+            nights: 3, // Hardcoded for now (Semester 1 level)
+            guests: 2  // Hardcoded for now
+        };
+        
+        // 3. Save this specific booking to the browser's memory
+        localStorage.setItem('currentBooking', JSON.stringify(bookingData));
+        
+        // 4. NOW we go to the payment page
+        window.location.href = 'payment.html';
+    }
+    // --- NEW CODE ENDS HERE ---
+</script>
 </body>
 </body><html>
