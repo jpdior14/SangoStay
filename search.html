@@ -321,7 +321,7 @@
                 <p class="text-sm text-[#92c992]">${house.landmark}</p>
                 <div class="mt-4 flex items-end justify-between">
                     <p class="text-lg font-bold text-primary">${house.price.toLocaleString()} FCFA</p>
-                    <button onclick="window.location.href='details.html'" class="rounded-lg bg-primary px-4 py-2 text-sm font-bold text-background-dark">View</button>
+                    <button onclick="selectProperty('${house.id}')" class="rounded-lg bg-primary px-4 py-2 text-sm font-bold text-background-dark">View</button>
                 </div>
             </div>
         </div>
@@ -342,4 +342,5 @@
     window.location.href = "details.html";
 }
 </script>
+
 </html>
