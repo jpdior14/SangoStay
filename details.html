@@ -9,6 +9,10 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#13ec13", "background-light": "#f6f8f6", "background-dark": "#102210", "surface-dark": "#1a331a", "surface-highlight": "#234823", "text-secondary": "#92c992"}, fontFamily: {display: "Plus Jakarta Sans"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
@@ -498,5 +502,21 @@
     }
     // --- NEW CODE ENDS HERE ---
 </script>
-</body>
+<script>
+    // 1. Initialize the map and set its view to Douala coordinates
+    // Coordinates for Akwa: 4.0500, 9.7000
+    var map = L.map('map').setView([4.0500, 9.7000], 15);
+
+    // 2. Add the "Dark Mode" map tiles (looks better for SangoStay)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // 3. Add a custom Green Marker for the property
+    var propertyMarker = L.marker([4.0500, 9.7000]).addTo(map);
+
+    // 4. Add a popup to the marker
+    propertyMarker.bindPopup("<b style='color:black;'>Villa des Fleurs</b><br><span style='color:black;'>Exact location after booking.</span>").openPopup();
+</script>
 </body><html>
+
