@@ -34,48 +34,60 @@
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-x-hidden">
 <div class="flex min-h-screen flex-col">
 <!-- Navigation Bar -->
-<header class="sticky top-0 z-50 flex items-center justify-between border-b border-surface-border bg-background-dark/95 backdrop-blur-sm px-6 py-4 lg:px-10">
-<div class="flex items-center gap-8">
-<a class="flex items-center gap-3 text-white transition-opacity hover:opacity-80" href="#">
-<a href="index.html" class="flex items-center gap-2 text-white cursor-pointer">
-    <img src="Sango.png" alt="SangoStay Logo" class="h-10 w-auto object-contain">
-    <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">SangoStay</h2>
-</a>
-</a>
-<!-- Expanded Desktop Search Bar -->
-<div class="hidden lg:flex items-center rounded-full border border-surface-border bg-[#152915] p-1 pr-2 shadow-sm transition-all hover:border-surface-border/50 hover:bg-[#1a301a]">
-<div class="flex items-center border-r border-surface-border px-4 py-2">
-<label class="text-xs font-bold text-white">Location</label>
-<input id="search-input" class="ml-2 w-24 bg-transparent p-0 text-sm text-[#92c992] placeholder-[#92c992]/50 focus:ring-0 border-none" placeholder="Type a city..." type="text"/>
-</div>
-<div class="flex items-center border-r border-surface-border px-4 py-2">
-<label class="text-xs font-bold text-white">Check-in</label>
-<input class="ml-2 w-24 bg-transparent p-0 text-sm text-[#92c992] placeholder-[#92c992]/50 focus:ring-0 border-none" placeholder="Add dates" type="text"/>
-</div>
-<div class="flex items-center pl-4 py-2">
-<label class="text-xs font-bold text-white">Guests</label>
-<input class="ml-2 w-20 bg-transparent p-0 text-sm text-[#92c992] placeholder-[#92c992]/50 focus:ring-0 border-none" placeholder="Add guests" type="text"/>
-</div>
-<button class="ml-2 flex size-10 items-center justify-center rounded-full bg-primary text-background-dark transition-transform hover:scale-105">
-<span class="material-symbols-outlined">search</span>
-</button>
-</div>
-</div>
-<div class="flex items-center gap-6">
-<nav class="hidden md:flex items-center gap-6">
-<a class="text-sm font-medium text-white/80 hover:text-primary transition-colors" href="#">Stays</a>
-<a class="text-sm font-medium text-white/80 hover:text-primary transition-colors" href="#">Experiences</a>
-<a class="text-sm font-medium text-white/80 hover:text-primary transition-colors" href="#">Host with us</a>
-</nav>
-<div class="flex items-center gap-3 pl-4 border-l border-surface-border">
-<button class="flex items-center gap-2 rounded-full border border-surface-border bg-surface-dark px-3 py-2 text-white hover:bg-surface-border transition-colors">
-<span class="material-symbols-outlined text-xl">menu</span>
-<div class="h-8 w-8 overflow-hidden rounded-full bg-surface-border relative">
-<img alt="User avatar profile picture" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg_J-an12duNIqV3zTXkMlQsokIShynLBqMs1LDB7SgrFiMPDQ7lNRpEMY3jEw1U3EFu_bkQQ7zC6KWMmG7ekLI_2OTgnLLnQHuPh3zSndkd1w0wKbY420dti7se5g2kmdI8pngf0r5QOqTpQJUGzrezu_PA7JxQj-8MPruXihBrSmcMf3pTp-RxnWYEq744FK6jog3XdD4GZflX1tEarK7fkwddpWIRWBanjbo7jN0DuBjXJfrdhjallNTYMEvY1SgtNxcMWEfkI"/>
-</div>
-</button>
-</div>
-</div>
+<header class="sticky top-0 z-50 border-b border-surface-border bg-background-dark/95 backdrop-blur-sm px-4 py-3 lg:px-10">
+    <div class="max-w-[1440px] mx-auto flex items-center justify-between gap-4">
+        
+        <!-- 1. Left: Logo & Name -->
+        <div class="flex items-center shrink-0">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="Sango.png" alt="SangoStay" class="h-9 w-auto object-contain">
+                <h2 class="hidden sm:block text-white text-xl font-bold tracking-tighter group-hover:text-primary transition-colors">
+                    SangoStay
+                </h2>
+            </a>
+        </div>
+
+        <!-- 2. Center: Expanded Search Bar (Desktop Only) -->
+        <div class="hidden lg:flex flex-1 justify-center max-w-2xl">
+            <div class="flex items-center w-full rounded-full border border-surface-border bg-[#152915] p-1 shadow-lg transition-all hover:bg-[#1a301a]">
+                <!-- Location -->
+                <div class="flex flex-1 flex-col px-5 border-r border-surface-border">
+                    <label class="text-[10px] font-black text-white uppercase tracking-widest">Location</label>
+                    <input class="bg-transparent p-0 text-xs text-[#92c992] placeholder-[#92c992]/50 focus:ring-0 border-none" placeholder="Type a city...">
+                </div>
+                <!-- Check-in -->
+                <div class="flex flex-col px-5 border-r border-surface-border">
+                    <label class="text-[10px] font-black text-white uppercase tracking-widest">Check-in</label>
+                    <span class="text-xs text-[#92c992]/60">Add dates</span>
+                </div>
+                <!-- Guests -->
+                <div class="flex flex-col px-5">
+                    <label class="text-[10px] font-black text-white uppercase tracking-widest">Guests</label>
+                    <span class="text-xs text-[#92c992]/60">Add guests</span>
+                </div>
+                <!-- Search Button -->
+                <button class="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary text-background-dark hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined font-bold">search</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 3. Right: Nav Links & Profile -->
+        <div class="flex items-center gap-4 shrink-0">
+            <nav class="hidden xl:flex items-center gap-6 mr-2">
+                <a href="#" class="text-sm font-medium text-white/80 hover:text-primary transition-colors">Stays</a>
+                <a href="host_verify.html" class="text-sm font-medium text-white/80 hover:text-primary transition-colors">Host</a>
+            </nav>
+            
+            <button class="flex items-center gap-2 rounded-full border border-surface-border bg-surface-dark p-1 pr-3 hover:border-primary/50 transition-all">
+                <div class="h-8 w-8 overflow-hidden rounded-full bg-surface-border">
+                    <img alt="User" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg_J-an12duNIqV3zTXkMlQsokIShynLBqMs1LDB7SgrFiMPDQ7lNRpEMY3jEw1U3EFu_bkQQ7zC6KWMmG7ekLI_2OTgnLLnQHuPh3zSndkd1w0wKbY420dti7se5g2kmdI8pngf0r5QOqTpQJUGzrezu_PA7JxQj-8MPruXihBrSmcMf3pTp-RxnWYEq744FK6jog3XdD4GZflX1tEarK7fkwddpWIRWBanjbo7jN0DuBjXJfrdhjallNTYMEvY1SgtNxcMWEfkI"/>
+                </div>
+                <span class="material-symbols-outlined text-white text-xl">menu</span>
+            </button>
+        </div>
+
+    </div>
 </header>
 <!-- Main Content Layout -->
 <main class="flex flex-1 flex-col lg:flex-row">
@@ -404,5 +416,6 @@
 </script>
 
 </html>
+
 
 
