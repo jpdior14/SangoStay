@@ -322,7 +322,36 @@
     // 2. The Function to Draw the Cards
     function renderList(items) {
         // Clear the container first
-        listingsContainer.innerHTML = "";
+	    if (!listingsContainer) return; 
+    
+    listingsContainer.innerHTML = ""; 
+    
+    properties.forEach(house => {
+        listingsContainer.innerHTML += `
+        <div onclick="selectProperty('${house.id}')" class="group cursor-pointer relative flex flex-col overflow-hidden rounded-xl bg-surface-dark shadow-md transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 border border-surface-border/50">
+            <div class="relative aspect-[4/3] w-full overflow-hidden">
+                <img src="${house.image}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute top-3 left-3 bg-background-dark/80 backdrop-blur-md px-2 py-1 rounded text-[10px] font-bold text-primary border border-primary/20">
+                    CNI VERIFIED
+                </div>
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-base font-bold text-white leading-tight">${house.name}</h3>
+                    <div class="flex items-center gap-1">
+                        <span class="material-symbols-outlined text-primary text-sm">star</span>
+                        <span class="text-xs font-bold text-white">${house.rating}</span>
+                    </div>
+                </div>
+                <p class="text-xs text-text-secondary mb-4">${house.landmark}</p>
+                <div class="mt-auto pt-4 border-t border-surface-border/30 flex justify-between items-center">
+                    <p class="text-sm font-bold text-primary">${house.price.toLocaleString()} <span class="text-[10px] text-text-secondary font-normal">XAF / night</span></p>
+                    <span class="material-symbols-outlined text-primary">arrow_forward</span>
+                </div>
+            </div>
+        </div>
+        `;
+    });
 
         // If no houses match, show a message
         if(items.length === 0) {
@@ -416,6 +445,7 @@
 </script>
 
 </html>
+
 
 
 
