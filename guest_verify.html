@@ -143,8 +143,8 @@
        inputmode="numeric" />
 </div>
 </div>
-<!-- Submit Button -->
-<button onclick="handleFinalVerification()" class="w-full h-12 mt-2 bg-primary hover:bg-primary-hover text-background-dark font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
+<!-- Submit Updated Button: Added 'this' to the function call -->
+<button onclick="handleFinalVerification(this)" class="w-full h-12 mt-2 bg-primary hover:bg-primary-hover text-background-dark font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
     <span>Verify Identity</span>
     <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
 </button>
@@ -271,9 +271,9 @@
     });
 </script>
 <script>
-function handleFinalVerification() {
+        function handleFinalVerification(btn) {
     // 1. Get all the OTP inputs
-    const inputs = document.querySelectorAll('input[inputmode="numeric"]');
+    const inputs = document.querySelectorAll('input[maxlength="1"]');
     let code = "";
     inputs.forEach(input => code += input.value);
 
@@ -283,17 +283,24 @@ function handleFinalVerification() {
         return;
     }
 
-    // 3. Show a "Processing" state (Optional but looks pro)
-    const btn = event.currentTarget;
-    btn.innerHTML = "Processing...";
+    // 3. Get the real property name from memory
+    const bookingData = JSON.parse(localStorage.getItem('currentBooking'));
+    const propertyName = bookingData ? bookingData.name : "your stay";
+
+    // 4. Show a "Processing" state
+    const originalContent = btn.innerHTML;
+    btn.innerHTML = `<span class="animate-spin material-symbols-outlined">sync</span> <span>Verifying...</span>`;
     btn.disabled = true;
 
-    // 4. Simulate the verification delay
+    // 5. Simulate the verification delay
     setTimeout(() => {
-        // 5. The Big Success Message
-        alert("✅ IDENTITY VERIFIED!\n\nYour booking at Villa des Fleurs is now CONFIRMED. \n\nCheck your SMS for the exact landmark and the host's direct WhatsApp number. Welcome to SangoStay!");
+        // 6. The Dynamic Success Message
+        alert(`✅ IDENTITY VERIFIED!\n\nYour booking at ${propertyName} is now CONFIRMED. \n\nCheck your SMS for the exact landmark and the host's direct WhatsApp number. Welcome to SangoStay!`);
 
-        // 6. REDIRECT TO HOME (P1)
+        // 7. Clear the booking so they can start fresh
+        localStorage.removeItem('currentBooking');
+
+        // 8. REDIRECT TO HOME
         window.location.href = 'index.html';
     }, 2000);
 }
@@ -301,3 +308,4 @@ function handleFinalVerification() {
 </body>
 
 </html>
+
