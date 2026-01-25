@@ -369,9 +369,9 @@
 <div class="px-4 py-8 border-t border-[#234823] mt-4">
 <h3 class="text-white text-xl font-bold mb-2">Where you'll be</h3>
 <p class="text-text-secondary mb-6 text-sm">Akwa, Douala, Cameroon</p>
-<div class="w-full h-[400px] rounded-xl overflow-hidden relative bg-[#1a331a]">
-<!-- Static Map Placeholder -->
-<div class="w-full h-full bg-cover bg-center opacity-60" data-alt="Map showing the Akwa district in Douala" data-location="Douala, Cameroon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAxwF0gdak-5cGa_mCF-MiO58qrl7fKjRSwGr8zdU6SpbpbS747h2pSSwfPkc4raP3zhzEz9VLUDLmm2fIihtqJEgl85jRzbFP_6qLI5k_uHL7_d3cdeYm6tJYV54uvF-q0CwX9YkOp0JFMrhTBgTtcmugtyHmHPcoXfYLAkqopnli-iIvcUIZFIDMC47x9dveHMIhDePCoqBN4Pvq-vDzRdBku42i-NGDI7ATa_GY2STxJ6ZQ9ea84tnlN_fqZc80VVgE_IajWC0Y");'></div>
+<div id="map" class="w-full h-[400px] rounded-xl overflow-hidden relative z-10 border border-surface-border">
+    <!-- Leaflet will inject the map here -->
+</div>
 <!-- Map Overlay UI -->
 <div class="absolute inset-0 flex items-center justify-center">
 <div class="bg-primary/20 rounded-full p-8 animate-pulse">
@@ -520,3 +520,4 @@
 </script>
 </body>
 </html>
+
