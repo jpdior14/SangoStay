@@ -455,84 +455,82 @@
 <script src="config.js"></script>
 <script src="chat.js"></script>
         <script>
-        // --- EXISTING CODE STARTS HERE ---
-        // 1. Get the ID from memory
-    const selectedId = localStorage.getItem('selectedPropertyId');
+    // 1. GLOBAL VARIABLES (Make them available to all scripts)
+    let selectedId = localStorage.getItem('selectedPropertyId');
+    let property = null;
 
-    // 2. Find that property in our data.js
-    const property = properties.find(p => p.id === selectedId);
+    // 2. INITIALIZE DATA
+    if (typeof properties !== 'undefined' && selectedId) {
+        property = properties.find(p => p.id === selectedId);
+    }
 
-    // 3. Inject the data into the page
+    // 3. INJECT DATA SAFELY
     if (property) {
         document.getElementById('prop-name').innerText = property.name;
         document.getElementById('prop-price').innerText = property.price.toLocaleString() + " XAF";
         document.getElementById('prop-host').innerText = "Hosted by " + property.host;
         
-        // Update the background image of the div
-        document.getElementById('prop-img').style.backgroundImage = `url('${property.image}')`;
+        if(property.image) {
+            document.getElementById('prop-img').style.backgroundImage = `url('${property.image}')`;
+        }
     } else {
-        document.getElementById('prop-name').innerText = "Select a property from the search page";
+        // Fallback if no property is found
+        document.getElementById('prop-name').innerText = "Please select a stay from the Search page";
+        console.error("No property found in localStorage!");
     }
-    // --- EXISTING CODE ENDS HERE ---
 
-
-    // --- NEW CODE FOR STEP 1.1 STARTS HERE ---
+    // 4. PAYMENT REDIRECT FUNCTION
     function proceedToPayment() {
-        // 1. Check if we actually have a property loaded
         if (!property) {
-            alert("Error: No property selected. Please go back to search.");
+            alert("Please go back to the search page and select a house first!");
             return;
         }
 
-        // 2. Create a booking object with the current house details
         const bookingData = {
             name: property.name,
             pricePerNight: property.price,
             image: property.image,
             location: property.location,
-            nights: 3, // Hardcoded for now (Semester 1 level)
-            guests: 2  // Hardcoded for now
+            nights: 3, 
+            guests: 2  
         };
         
-        // 3. Save this specific booking to the browser's memory
         localStorage.setItem('currentBooking', JSON.stringify(bookingData));
-        
-        // 4. NOW we go to the payment page
         window.location.href = 'payment.html';
     }
-    // --- NEW CODE ENDS HERE ---
-</script>
-<script>
-    // 1. Define coordinates for our cities
-    const cityCoords = {
-        "Douala": [4.0500, 9.7000],
-        "Yaoundé": [3.8480, 11.5021],
-        "Kribi": [2.9506, 9.9077],
-        "Buea": [4.1593, 9.2435]
-    };
 
-    // 2. Determine where to center the map
-    let latLng = [4.0500, 9.7000]; // Default Douala
-    if (property && property.location) {
-        if (property.location.includes("Yaoundé")) latLng = cityCoords["Yaoundé"];
-        if (property.location.includes("Kribi")) latLng = cityCoords["Kribi"];
-        if (property.location.includes("Buea")) latLng = cityCoords["Buea"];
+    // 5. MAP INITIALIZATION (Wrapped in a function for safety)
+    function initMap() {
+        const cityCoords = {
+            "Douala": [4.0500, 9.7000],
+            "Yaoundé": [3.8480, 11.5021],
+            "Kribi": [2.9506, 9.9077],
+            "Buea": [4.1593, 9.2435]
+        };
+
+        let latLng = cityCoords["Douala"]; // Default
+        
+        if (property && property.location) {
+            if (property.location.includes("Yaoundé")) latLng = cityCoords["Yaoundé"];
+            else if (property.location.includes("Kribi")) latLng = cityCoords["Kribi"];
+            else if (property.location.includes("Buea")) latLng = cityCoords["Buea"];
+        }
+
+        // Initialize Map
+        var map = L.map('map', {
+            scrollWheelZoom: false // Better UX so users don't get stuck while scrolling
+        }).setView(latLng, 14);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; SangoStay'
+        }).addTo(map);
+
+        var marker = L.marker(latLng).addTo(map);
+        marker.bindPopup(`<b>${property ? property.name : 'Approximate Location'}</b><br>Exact details shared after MoMo payment.`).openPopup();
     }
 
-    // 3. Initialize the map
-    var map = L.map('map').setView(latLng, 14);
-
-    // 4. Add Dark Mode tiles
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap'
-    }).addTo(map);
-
-    // 5. Add the marker
-    var marker = L.marker(latLng).addTo(map);
-    marker.bindPopup(`<b>${property ? property.name : 'Property'}</b><br>Exact location shared after booking.`).openPopup();
+    // Run map after a tiny delay to ensure the DIV is ready
+    setTimeout(initMap, 500);
 </script>
 </body>
 </html>
-
-
-
