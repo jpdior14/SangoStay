@@ -87,9 +87,9 @@
 </div>
 </div>
 <!-- Image Grid (Masonry ish) -->
-<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-3 px-4 min-h-[400px] md:h-[550px] mb-8 rounded-xl overflow-hidden relative group">
-<div class="md:col-span-2 md:row-span-2 relative">
-<div class="w-full h-full bg-center bg-no-repeat bg-cover hover:scale-105 transition-transform duration-700" data-alt="Modern living room with green accents and large windows" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNrpNtIfRJXDX1-QkLorFAQPOLJ977PUGq2gCdGPId8wH18_ws8V53T1i3ozKrFCqtJ90IAm9bro1OIk8jXMNCexs_-R9XzXB6JYmKNFH6g0hRLt7Ca9K3Zy1uBpvKx-XYlba4UNPCxR_PJv9tquOlPdHKzNnpBFOrw3BDXU1MkKaZJPuB6ttdRZZCnIQQikac2g5aPP5Yd2K7HbRvbzEa4k-1tQpY5Xk1OcgofZyVevguf4DLdBVCXdg652FHcUJ8nZT9OFr7Vjw");'></div>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-3 px-4 h-[400px] md:h-[550px] mb-8 rounded-xl overflow-hidden relative group">
+<div class="md:col-span-2 md:row-span-2 relative h-full w-full">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover hover:scale-105 transition-transform duration-700" data-alt="Modern living room with green accents and large windows" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCNrpNtIfRJXDX1-QkLorFAQPOLJ977PUGq2gCdGPId8wH18_ws8V53T1i3ozKrFCqtJ90IAm9bro1OIk8jXMNCexs_-R9XzXB6JYmKNFH6g0hRLt7Ca9K3Zy1uBpvKx-XYlba4UNPCxR_PJv9tquOlPdHKzNnpBFOrw3BDXU1MkKaZJPuB6ttdRZZCnIQQikac2g5aPP5Yd2K7HbRvbzEa4k-1tQpY5Xk1OcgofZyVevguf4DLdBVCXdg652FHcUJ8nZT9OFr7Vjw"); min-height: 300px;'>
 </div>
 <div class="hidden md:block relative">
 <div class="w-full h-full bg-center bg-no-repeat bg-cover hover:scale-105 transition-transform duration-700" data-alt="Cozy bedroom with soft lighting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDsbrmjnctAk-jmfQRz82qfAcjqNq3ENgfIGagV4Pd3GPl8sbMRFdgpNk8XdpZfeo0M_xGH7Ml1lIkQodlp5ZuH62ketLCYItFeGyYRTV_vzhkniab4wR8dqFYlvT5fyzy6WXBjWZn_Ky9eCCxQx_8cAdqK15spGh_om6_I5QpTU2GDlFMnXQTSPMHnnqgGll99MBwE4hiAfdwvhglQJGVVC3M0Td8XuYGSQhuC1Vma6T9GTy4VznmaIPtIYCM4vsUyRMzDiOZ9Dlw");'></div>
@@ -455,92 +455,90 @@
 <script src="config.js"></script>
 <script src="chat.js"></script>
         <script>
-    // 1. GLOBAL VARIABLES (Make them available to all scripts)
-    let selectedId = localStorage.getItem('selectedPropertyId');
-    let property = null;
+    // 1. Wait for everything to load
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("SangoStay: Page Loaded");
 
-    // 2. INITIALIZE DATA
-    if (typeof properties !== 'undefined' && selectedId) {
-        property = properties.find(p => p.id === selectedId);
-    }
+        // 2. Get Data from LocalStorage
+        const selectedId = localStorage.getItem('selectedPropertyId');
+        // If properties array isn't found, we use a fallback so the page doesn't break
+        const allProps = (typeof properties !== 'undefined') ? properties : [];
+        const property = allProps.find(p => p.id === selectedId);
 
-    // 3. INJECT DATA SAFELY
-    // Replace your current data injection with this:
-if (property) {
-    document.getElementById('prop-name').innerText = property.name;
-    document.getElementById('prop-price').innerText = property.price.toLocaleString() + " XAF";
-    document.getElementById('prop-host').innerText = "Hosted by " + property.host;
-    const total = property.price * 3; // 3 nights for demo
-document.getElementById('breakdown-calc').innerText = `${property.price.toLocaleString()} XAF x 3 nights`;
-document.getElementById('breakdown-total').innerText = `${total.toLocaleString()} XAF`;
-// Also update the big total at the bottom
-document.querySelector('.text-primary.text-xl').innerText = total.toLocaleString();
-    
-    if(property.image) {
-        document.getElementById('prop-img').style.backgroundImage = `url('${property.image}')`;
-    }
-} else {
-    // If no property is found, redirect them back to search so the app doesn't look broken
-    console.log("No property selected, redirecting...");
-    window.location.href = 'search.html'; 
-}
+        if (property) {
+            console.log("Found property:", property.name);
+            
+            // Inject Text
+            document.getElementById('prop-name').innerText = property.name;
+            document.getElementById('prop-host').innerText = "Hosted by " + property.host;
+            
+            // Inject Price & Math
+            const price = property.price;
+            const total = price * 3; // 3 nights demo
+            document.getElementById('prop-price').innerText = price.toLocaleString() + " XAF";
+            
+            // Update the breakdown math if the IDs exist
+            if(document.getElementById('breakdown-calc')) {
+                document.getElementById('breakdown-calc').innerText = `${price.toLocaleString()} XAF x 3 nights`;
+                document.getElementById('breakdown-total').innerText = `${total.toLocaleString()} XAF`;
+                document.querySelector('.text-primary.text-xl').innerText = total.toLocaleString();
+            }
 
-    // 4. PAYMENT REDIRECT FUNCTION
-    function proceedToPayment() {
-        if (!property) {
-            alert("Please go back to the search page and select a house first!");
-            return;
+            // Inject Image
+            const imgDiv = document.getElementById('prop-img');
+            if(imgDiv) {
+                imgDiv.style.backgroundImage = `url('${property.image}')`;
+                imgDiv.style.backgroundSize = 'cover';
+            }
+            
+            // 3. Initialize Map
+            initSangoMap(property);
+        } else {
+            console.error("No property found! Redirecting to search...");
+            // Uncomment the line below if you want it to auto-redirect when broken
+            // window.location.href = 'search.html';
         }
+    });
 
-        const bookingData = {
-            name: property.name,
-            pricePerNight: property.price,
-            image: property.image,
-            location: property.location,
-            nights: 3, 
-            guests: 2  
-        };
-        
-        localStorage.setItem('currentBooking', JSON.stringify(bookingData));
-        window.location.href = 'payment.html';
-    }
+    function initSangoMap(prop) {
+        const mapDiv = document.getElementById('map');
+        if (!mapDiv) return;
 
-    // 5. MAP INITIALIZATION (Wrapped in a function for safety)
-    function initMap() {
         const cityCoords = {
             "Douala": [4.0500, 9.7000],
             "Yaoundé": [3.8480, 11.5021],
             "Kribi": [2.9506, 9.9077],
             "Buea": [4.1593, 9.2435]
-            setTimeout(() => {
-                map.invalidateSize();
-            }, 100);
-        }
-    };
+        };
 
-        let latLng = cityCoords["Douala"]; // Default
+        let coords = cityCoords["Douala"];
+        if (prop.location.includes("Yaoundé")) coords = cityCoords["Yaoundé"];
+        if (prop.location.includes("Kribi")) coords = cityCoords["Kribi"];
+        if (prop.location.includes("Buea")) coords = cityCoords["Buea"];
+
+        const map = L.map('map', { scrollWheelZoom: false }).setView(coords, 14);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png').addTo(map);
+        L.marker(coords).addTo(map).bindPopup(`<b>${prop.name}</b>`).openPopup();
         
-        if (property && property.location) {
-            if (property.location.includes("Yaoundé")) latLng = cityCoords["Yaoundé"];
-            else if (property.location.includes("Kribi")) latLng = cityCoords["Kribi"];
-            else if (property.location.includes("Buea")) latLng = cityCoords["Buea"];
-        }
-
-        // Initialize Map
-        var map = L.map('map', {
-            scrollWheelZoom: false // Better UX so users don't get stuck while scrolling
-        }).setView(latLng, 14);
-
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; SangoStay'
-        }).addTo(map);
-
-        var marker = L.marker(latLng).addTo(map);
-        marker.bindPopup(`<b>${property ? property.name : 'Approximate Location'}</b><br>Exact details shared after MoMo payment.`).openPopup();
+        setTimeout(() => { map.invalidateSize(); }, 500);
     }
 
-    // Run map after a tiny delay to ensure the DIV is ready
-    setTimeout(initMap, 500);
+    function proceedToPayment() {
+        const selectedId = localStorage.getItem('selectedPropertyId');
+        const property = properties.find(p => p.id === selectedId);
+        
+        if (property) {
+            const bookingData = {
+                name: property.name,
+                pricePerNight: property.price,
+                image: property.image,
+                nights: 3
+            };
+            localStorage.setItem('currentBooking', JSON.stringify(bookingData));
+            window.location.href = 'payment.html';
+        }
+    }
 </script>
 </body>
 </html>
+
