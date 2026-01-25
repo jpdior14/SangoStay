@@ -353,7 +353,52 @@
         `;
     });
 
-        
+        // If no houses match, show a message
+        if(items.length === 0) {
+            listingsContainer.innerHTML = `
+                <div class="col-span-full text-center py-20">
+                    <span class="material-symbols-outlined text-6xl text-surface-border mb-4">travel_explore</span>
+                    <h3 class="text-white text-xl font-bold">No stays found</h3>
+                    <p class="text-[#92c992]">We don't have listings there yet. Try "Douala" or "Kribi".</p>
+                </div>
+            `;
+            return;
+        }
+
+        // Loop through the data and build HTML
+        items.forEach(house => {
+            const cardHTML = `
+            <div class="group relative flex flex-col overflow-hidden rounded-xl bg-surface-dark shadow-md transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5">
+                <div class="relative aspect-[4/3] w-full overflow-hidden">
+                    <div class="absolute right-3 top-3 z-10 rounded-full bg-black/40 p-1.5 text-white backdrop-blur-sm transition-colors hover:bg-red-500/80 cursor-pointer">
+                        <span class="material-symbols-outlined block text-xl">favorite</span>
+                    </div>
+                    <img src="${house.image}" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="flex flex-1 flex-col p-4">
+                    <div class="mb-1 flex items-center justify-between">
+                        <h3 class="text-lg font-bold text-white line-clamp-1">${house.name}</h3>
+                        <div class="flex items-center gap-1 text-white">
+                            <span class="material-symbols-outlined text-primary text-sm filled">star</span>
+                            <span class="text-sm font-bold">${house.rating}</span>
+                        </div>
+                    </div>
+                    <p class="mb-2 text-sm text-[#92c992]">${house.landmark}</p>
+                    <div class="mt-auto flex items-end justify-between border-t border-surface-border pt-4">
+                        <div>
+                            <p class="text-lg font-bold text-primary">${house.price.toLocaleString()} FCFA <span class="text-sm font-normal text-white/60">/ night</span></p>
+                        </div>
+                        <!-- CRITICAL: This button calls the function to save the ID -->
+                        <button onclick="selectProperty('${house.id}')" class="rounded-lg bg-primary px-4 py-2 text-sm font-bold text-background-dark transition-colors hover:bg-white text-center">
+                            View
+                        </button>
+                    </div>
+                </div>
+            </div>
+            `;
+            listingsContainer.innerHTML += cardHTML;
+        });
+    }
 
     // 3. The Function to Handle Clicks (Saves ID to Memory)
     function selectProperty(propertyId) {
