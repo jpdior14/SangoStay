@@ -369,7 +369,7 @@
 <div class="px-4 py-8 border-t border-[#234823] mt-4">
 <h3 class="text-white text-xl font-bold mb-2">Where you'll be</h3>
 <p class="text-text-secondary mb-6 text-sm">Akwa, Douala, Cameroon</p>
-<div id="map" class="w-full h-[400px] rounded-xl overflow-hidden relative z-10 border border-surface-border">
+<div id="map" class="w-full h-[400px] rounded-xl overflow-hidden relative z-0 border border-surface-border">
     <!-- Leaflet will inject the map here -->
     <div class="absolute inset-0 flex items-center justify-center">
 <div class="bg-primary/20 rounded-full p-8 animate-pulse">
@@ -465,19 +465,25 @@
     }
 
     // 3. INJECT DATA SAFELY
-    if (property) {
-        document.getElementById('prop-name').innerText = property.name;
-        document.getElementById('prop-price').innerText = property.price.toLocaleString() + " XAF";
-        document.getElementById('prop-host').innerText = "Hosted by " + property.host;
-        
-        if(property.image) {
-            document.getElementById('prop-img').style.backgroundImage = `url('${property.image}')`;
-        }
-    } else {
-        // Fallback if no property is found
-        document.getElementById('prop-name').innerText = "Please select a stay from the Search page";
-        console.error("No property found in localStorage!");
+    // Replace your current data injection with this:
+if (property) {
+    document.getElementById('prop-name').innerText = property.name;
+    document.getElementById('prop-price').innerText = property.price.toLocaleString() + " XAF";
+    document.getElementById('prop-host').innerText = "Hosted by " + property.host;
+    const total = property.price * 3; // 3 nights for demo
+document.getElementById('breakdown-calc').innerText = `${property.price.toLocaleString()} XAF x 3 nights`;
+document.getElementById('breakdown-total').innerText = `${total.toLocaleString()} XAF`;
+// Also update the big total at the bottom
+document.querySelector('.text-primary.text-xl').innerText = total.toLocaleString();
+    
+    if(property.image) {
+        document.getElementById('prop-img').style.backgroundImage = `url('${property.image}')`;
     }
+} else {
+    // If no property is found, redirect them back to search so the app doesn't look broken
+    console.log("No property selected, redirecting...");
+    window.location.href = 'search.html'; 
+}
 
     // 4. PAYMENT REDIRECT FUNCTION
     function proceedToPayment() {
@@ -506,7 +512,11 @@
             "Yaoundé": [3.8480, 11.5021],
             "Kribi": [2.9506, 9.9077],
             "Buea": [4.1593, 9.2435]
-        };
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 100);
+        }
+    };
 
         let latLng = cityCoords["Douala"]; // Default
         
