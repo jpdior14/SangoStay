@@ -503,21 +503,35 @@
     // --- NEW CODE ENDS HERE ---
 </script>
 <script>
-    // 1. Initialize the map and set its view to Douala coordinates
-    // Coordinates for Akwa: 4.0500, 9.7000
-    var map = L.map('map').setView([4.0500, 9.7000], 15);
+    // 1. Define coordinates for our cities
+    const cityCoords = {
+        "Douala": [4.0500, 9.7000],
+        "Yaoundé": [3.8480, 11.5021],
+        "Kribi": [2.9506, 9.9077],
+        "Buea": [4.1593, 9.2435]
+    };
 
-    // 2. Add the "Dark Mode" map tiles (looks better for SangoStay)
+    // 2. Determine where to center the map
+    let latLng = [4.0500, 9.7000]; // Default Douala
+    if (property && property.location) {
+        if (property.location.includes("Yaoundé")) latLng = cityCoords["Yaoundé"];
+        if (property.location.includes("Kribi")) latLng = cityCoords["Kribi"];
+        if (property.location.includes("Buea")) latLng = cityCoords["Buea"];
+    }
+
+    // 3. Initialize the map
+    var map = L.map('map').setView(latLng, 14);
+
+    // 4. Add Dark Mode tiles
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
+        attribution: '&copy; OpenStreetMap'
     }).addTo(map);
 
-    // 3. Add a custom Green Marker for the property
-    var propertyMarker = L.marker([4.0500, 9.7000]).addTo(map);
-
-    // 4. Add a popup to the marker
-    propertyMarker.bindPopup("<b style='color:black;'>Villa des Fleurs</b><br><span style='color:black;'>Exact location after booking.</span>").openPopup();
+    // 5. Add the marker
+    var marker = L.marker(latLng).addTo(map);
+    marker.bindPopup(`<b>${property ? property.name : 'Property'}</b><br>Exact location shared after booking.`).openPopup();
 </script>
 </body>
 </html>
+
 
