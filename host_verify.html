@@ -23,6 +23,14 @@
     body.fr-active .lang-fr { display: inline; }
     body.fr-active .lang-fr-block { display: block; }
 </style>
+    <style>
+    /* Prevent horizontal scroll on the whole site */
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+        position: relative;
+    }
+</style>
 </head>
 <body class="bg-background-dark text-white font-display overflow-x-hidden min-h-screen flex flex-col">
 <!-- Navbar -->
@@ -330,4 +338,5 @@ if (localStorage.getItem('language') === 'fr') {
 
 </body>
 </html>
+
 
