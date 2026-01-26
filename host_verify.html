@@ -40,6 +40,12 @@
             <button class="flex items-center gap-2 cursor-pointer rounded-lg h-10 px-4 hover:bg-surface-dark transition-colors text-white text-sm font-bold">
                 <span class="truncate">Help</span>
             </button>
+            <!-- THIS BUTTON HERE -->
+    <button onclick="toggleLanguage()" class="flex items-center gap-2 bg-surface-dark border border-border-dark px-3 py-1 rounded-lg hover:bg-primary/20 transition-colors">
+        <span class="material-symbols-outlined text-sm text-primary">language</span>
+        <span class="lang-en text-xs font-bold">EN</span>
+        <span class="lang-fr text-xs font-bold">FR</span>
+    </button>
             
             <div class="flex items-center gap-3">
                 <!-- Profile Pic -->
@@ -324,3 +330,4 @@ if (localStorage.getItem('language') === 'fr') {
 
 </body>
 </html>
+
