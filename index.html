@@ -27,6 +27,14 @@
     }
 </style>
     <style>
+    /* Prevent horizontal scroll on the whole site */
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+        position: relative;
+    }
+</style>
+    <style>
     /* Default: Show English, Hide French */
     .lang-fr { display: none; }
     
@@ -476,4 +484,5 @@ if (localStorage.getItem('language') === 'fr') {
 </script>
 </body>
 </html>
+
 
