@@ -16,6 +16,15 @@
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#13ec13", "background-light": "#f6f8f6", "background-dark": "#102210", "surface-dark": "#1a331a", "surface-highlight": "#234823", "text-secondary": "#92c992"}, fontFamily: {display: "Plus Jakarta Sans"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+<style>
+    /* Default: Show English, Hide French */
+    .lang-fr { display: none; }
+    
+    /* When French is active: Hide English, Show French */
+    body.fr-active .lang-en { display: none; }
+    body.fr-active .lang-fr { display: inline; }
+    body.fr-active .lang-fr-block { display: block; }
+</style>
 </head>
 <body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased">
 <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
@@ -191,3 +200,4 @@
 </script>
 </body>
 </html>
+
