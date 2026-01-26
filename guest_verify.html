@@ -29,6 +29,15 @@
             background: #13ec13;
         }
     </style>
+<style>
+    /* Default: Show English, Hide French */
+    .lang-fr { display: none; }
+    
+    /* When French is active: Hide English, Show French */
+    body.fr-active .lang-en { display: none; }
+    body.fr-active .lang-fr { display: inline; }
+    body.fr-active .lang-fr-block { display: block; }
+</style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-background-dark overflow-x-hidden flex flex-col min-h-screen">
 <!-- Navbar -->
@@ -308,4 +317,5 @@
 </body>
 
 </html>
+
 
