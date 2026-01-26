@@ -1,5 +1,6 @@
-const API_KEY = 'AIzaSyC1yJ5NAM7heon0J8ismZN-AMIAIpkQi-4'; 
+const API_KEY = 'AIzaSyACFeRah3gGGjov3vyaBSHAN7Z-CrbANbI; 
 // This is now the only place your key lives.
+
 
 
 
