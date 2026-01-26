@@ -87,7 +87,13 @@
                 <a href="#" class="text-sm font-medium text-white/80 hover:text-primary transition-colors">Stays</a>
                 <a href="host_verify.html" class="text-sm font-medium text-white/80 hover:text-primary transition-colors">Host</a>
             </nav>
-            
+            <div class="flex items-center gap-3 pl-4 border-l border-surface-border">
+    <!-- ADD THIS BUTTON HERE -->
+    <button onclick="toggleLanguage()" class="flex items-center gap-2 bg-surface-dark border border-surface-border px-3 py-1 rounded-lg hover:bg-primary/20 transition-colors">
+        <span class="material-symbols-outlined text-sm text-primary">language</span>
+        <span class="lang-en text-xs font-bold">EN</span>
+        <span class="lang-fr text-xs font-bold">FR</span>
+    </button>
             <button class="flex items-center gap-2 rounded-full border border-surface-border bg-surface-dark p-1 pr-3 hover:border-primary/50 transition-all">
                 <div class="h-8 w-8 overflow-hidden rounded-full bg-surface-border">
                     <img alt="User" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg_J-an12duNIqV3zTXkMlQsokIShynLBqMs1LDB7SgrFiMPDQ7lNRpEMY3jEw1U3EFu_bkQQ7zC6KWMmG7ekLI_2OTgnLLnQHuPh3zSndkd1w0wKbY420dti7se5g2kmdI8pngf0r5QOqTpQJUGzrezu_PA7JxQj-8MPruXihBrSmcMf3pTp-RxnWYEq744FK6jog3XdD4GZflX1tEarK7fkwddpWIRWBanjbo7jN0DuBjXJfrdhjallNTYMEvY1SgtNxcMWEfkI"/>
@@ -417,3 +423,4 @@ if (localStorage.getItem('language') === 'fr') {
 <script src="chat.js"></script>
 </script>
 </html>
+
