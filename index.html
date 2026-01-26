@@ -26,6 +26,15 @@
         border: 1px solid #326732;
     }
 </style>
+    <style>
+    /* Default: Show English, Hide French */
+    .lang-fr { display: none; }
+    
+    /* When French is active: Hide English, Show French */
+    body.fr-active .lang-en { display: none; }
+    body.fr-active .lang-fr { display: inline; }
+    body.fr-active .lang-fr-block { display: block; }
+</style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden">
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root">
@@ -444,5 +453,6 @@
 </script>
 </body>
 </html>
+
 
 
