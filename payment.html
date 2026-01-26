@@ -9,6 +9,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#13ec13", "primary-dark": "#0fb80f", "background-light": "#f6f8f6", "background-dark": "#102210", "surface-dark": "#193319", "border-green": "#326732", "text-muted": "#92c992"}, fontFamily: {display: "Plus Jakarta Sans"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+<style>
+    /* Default: Show English, Hide French */
+    .lang-fr { display: none; }
+    
+    /* When French is active: Hide English, Show French */
+    body.fr-active .lang-en { display: none; }
+    body.fr-active .lang-fr { display: inline; }
+    body.fr-active .lang-fr-block { display: block; }
+</style>
 </head>
 <body class="bg-background-dark text-white font-display overflow-x-hidden min-h-screen flex flex-col selection:bg-primary selection:text-background-dark">
 <!-- Top Navigation -->
@@ -335,4 +344,5 @@
 <script src="chat.js"></script>
 
 </body></html>
+
 
