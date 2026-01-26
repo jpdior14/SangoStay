@@ -38,6 +38,13 @@
 </a>
             </div>
             <div class="flex flex-1 justify-end gap-4 lg:gap-8">
+                <!-- THIS BUTTON HERE -->
+<button onclick="toggleLanguage()" class="flex items-center gap-2 bg-surface-dark border border-[#234823] px-3 py-1 rounded-lg hover:bg-primary/20 transition-colors">
+    <span class="material-symbols-outlined text-sm text-primary">language</span>
+    <span class="lang-en text-xs font-bold">EN</span>
+    <span class="lang-fr text-xs font-bold">FR</span>
+</button>
+
                 <a href="host_verify.html" class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-[#112211] text-sm font-bold hover:bg-primary/90 transition-colors">
                     <span class="truncate">Become a Host</span>
                 </a>
@@ -210,3 +217,4 @@ if (localStorage.getItem('language') === 'fr') {
 </script>
 </body>
 </html>
+
