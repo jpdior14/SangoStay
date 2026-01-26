@@ -64,8 +64,16 @@
         <span class="material-symbols-outlined text-sm mr-1">eco</span>
         Lite Mode
     </button>
-    <!-- END OF NEW BUTTON -->
-            <!-- Sign In goes to Search Results -->
+    <!-- NEW BUTTON -->
+            <div class="flex gap-2">
+    <!-- ADD THIS BUTTON HERE -->
+    <button onclick="toggleLanguage()" class="flex items-center gap-2 bg-surface-dark border border-surface-border px-3 py-1 rounded-lg hover:bg-primary/20 transition-colors mr-2">
+        <span class="material-symbols-outlined text-sm text-primary">language</span>
+        <span class="lang-en text-xs font-bold">EN</span>
+        <span class="lang-fr text-xs font-bold">FR</span>
+    </button>
+
+           <!-- Sign In goes to Search Results -->
             <button onclick="window.location.href='search.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-transparent border border-surface-border text-white text-sm font-bold hover:bg-surface-dark transition-colors">
                 <span class="truncate">Sign In</span>
             </button>
@@ -468,3 +476,4 @@ if (localStorage.getItem('language') === 'fr') {
 </script>
 </body>
 </html>
+
