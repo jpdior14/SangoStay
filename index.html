@@ -50,52 +50,29 @@
 <!-- Navbar -->
 <div class="w-full flex justify-center sticky top-0 z-50 bg-[#112211]/90 backdrop-blur-md border-b border-surface-border">
 <div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
-<header class="flex items-center justify-between whitespace-nowrap px-4 py-3 md:px-10">
-    <!-- Logo -->
-    <div class="flex items-center gap-2 text-white cursor-pointer" onclick="window.location.href='index.html'">
-        <img src="Sango.png" alt="SangoStay Logo" class="h-10 w-auto object-contain">
-        <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">SangoStay</h2>
-    </div>
-
-    <div class="flex flex-1 justify-end gap-4 md:gap-8">
-        <!-- Desktop Links -->
-        <div class="hidden md:flex items-center gap-6">
-            <!-- Link to Host Verification -->
-            <a class="text-white text-sm font-medium hover:text-primary transition-colors" href="host_verify.html">Become a Host</a>
-        </div>
+<!-- Navbar -->
+<header class="w-full border-b border-surface-border bg-[#112211]/90 backdrop-blur-md sticky top-0 z-50">
+    <div class="w-full max-w-[1200px] mx-auto px-4 py-3 flex items-center justify-between">
         
-        <!-- Action Buttons -->
-        <div class="flex gap-2">
-    
-    <!-- PASTE THIS NEW BUTTON HERE -->
-    <button onclick="toggleLiteMode()" class="flex items-center justify-center rounded-lg h-9 px-3 border border-primary text-primary text-xs font-bold hover:bg-primary hover:text-black transition-colors" title="Save Data">
-        <span class="material-symbols-outlined text-sm mr-1">eco</span>
-        Lite Mode
-    </button>
-    <!-- NEW BUTTON -->
-            <div class="flex gap-2">
-    <!-- ADD THIS BUTTON HERE -->
-    <button onclick="toggleLanguage()" class="flex items-center gap-2 bg-surface-dark border border-surface-border px-3 py-1 rounded-lg hover:bg-primary/20 transition-colors mr-2">
-        <span class="material-symbols-outlined text-sm text-primary">language</span>
-        <span class="lang-en text-xs font-bold">EN</span>
-        <span class="lang-fr text-xs font-bold">FR</span>
-    </button>
-
-           <!-- Sign In goes to Search Results -->
-            <button onclick="window.location.href='search.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-transparent border border-surface-border text-white text-sm font-bold hover:bg-surface-dark transition-colors">
-                <span class="truncate">Sign In</span>
-            </button>
-            
-            <!-- Sign Up goes to Guest Verification -->
-            <button onclick="window.location.href='guess_verify.html'" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary text-[#112211] text-sm font-bold hover:bg-primary-dark transition-colors">
-                <span class="truncate">Sign Up</span>
-            </button>
-            <button onclick="toggleLanguage()" class="flex items-center gap-2 bg-surface-dark border border-surface-border px-3 py-1 rounded-lg hover:bg-primary/20 transition-colors">
-    <span class="material-symbols-outlined text-sm text-primary">language</span>
-    <span class="lang-en text-xs font-bold">EN | FR</span>
-    <span class="lang-fr text-xs font-bold">FR | EN</span>
-</button>
+        <!-- Logo Area: Keep it simple -->
+        <div class="flex items-center gap-2 shrink-0">
+            <img src="Sango.png" alt="SangoStay Logo" class="h-10 w-auto object-contain">
+            <h2 class="text-white text-lg font-bold tracking-tight">SangoStay</h2>
         </div>
+
+        <!-- Desktop Links: HIDDEN on mobile -->
+        <div class="hidden md:flex items-center gap-6">
+            <a href="host_verify.html" class="text-white text-sm hover:text-primary">Become a Host</a>
+            <button class="bg-primary text-background-dark px-4 py-2 rounded-lg font-bold text-sm">Sign In</button>
+        </div>
+
+        <!-- Mobile Menu Button: ONLY visible on mobile -->
+        <div class="md:hidden flex items-center">
+            <button id="mobile-menu-btn" class="text-white p-1">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+
     </div>
 </header>
 </div>
@@ -115,49 +92,19 @@
                                     </h2>
 </div>
 <!-- Search Bar Complex -->
-<div class="w-full max-w-[800px] bg-[#193319]/90 backdrop-blur-sm border border-[#326732] p-2 rounded-full mt-6 shadow-2xl z-10 hidden md:flex">
-<div class="flex flex-1 items-center px-6 border-r border-[#326732] hover:bg-[#234823] rounded-full transition-colors cursor-pointer group">
-<div class="flex flex-col w-full py-1">
-<label class="text-[10px] uppercase font-bold text-primary tracking-wider">Where</label>
-<input class="bg-transparent border-none p-0 text-white placeholder-text-secondary focus:ring-0 text-sm font-medium w-full truncate" placeholder="Douala, Bastos, Akwa..." type="text"/>
-</div>
-</div>
-<div class="flex w-[160px] items-center px-6 border-r border-[#326732] hover:bg-[#234823] rounded-full transition-colors cursor-pointer">
-<div class="flex flex-col w-full py-1">
-<label class="text-[10px] uppercase font-bold text-primary tracking-wider">Check In</label>
-<span class="text-white text-sm font-medium opacity-70">Add dates</span>
-</div>
-</div>
-<div class="flex w-[160px] items-center px-6 hover:bg-[#234823] rounded-full transition-colors cursor-pointer">
-<div class="flex flex-col w-full py-1">
-<label class="text-[10px] uppercase font-bold text-primary tracking-wider">Check Out</label>
-<span class="text-white text-sm font-medium opacity-70">Add dates</span>
-</div>
-</div>
-<a href="search.html" class="bg-primary hover:bg-primary-dark text-[#112211] rounded-full p-4 flex items-center justify-center transition-transform active:scale-95 ml-2">
-    <span class="material-symbols-outlined font-bold">search</span>
-</a>
-</button>
-</div>
 <!-- Mobile Simple Search -->
-<label class="flex flex-col min-w-40 h-14 w-full max-w-[480px] md:hidden z-10">
-<div class="flex w-full flex-1 items-stretch rounded-lg h-full shadow-lg">
-<div class="text-[#92c992] flex border border-[#326732] bg-[#193319] items-center justify-center pl-[15px] rounded-l-lg border-r-0">
-<span class="material-symbols-outlined">search</span>
-</div>
-<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-white focus:outline-0 focus:ring-0 border border-[#326732] bg-[#193319] focus:border-[#326732] h-full placeholder:text-[#92c992] px-[15px] rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-sm font-normal" placeholder="Where to? (e.g., Douala...)"/>
-<div class="flex items-center justify-center rounded-r-lg border-l-0 border border-[#326732] bg-[#193319] pr-[7px]">
-<button onclick="window.location.href='search.html'" class="flex min-w-[80px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#112211] text-sm font-bold">
-    <span>Go</span>
-</button>
-</button>
-</div>
-</div>
-</label>
-</div>
-</div>
-</div>
-</div>
+<div class="w-full px-4 md:hidden z-10 mt-4">
+    <div class="flex w-full items-center rounded-lg border border-surface-border bg-[#193319] h-12 overflow-hidden">
+        <div class="pl-3 text-text-secondary">
+            <span class="material-symbols-outlined">search</span>
+        </div>
+        <input class="flex-1 bg-transparent border-none text-white text-sm focus:ring-0 placeholder:text-text-secondary/50" 
+               placeholder="Where to? (e.g. Douala)"/>
+        <button onclick="window.location.href='search.html'" 
+                class="bg-primary text-background-dark h-full px-4 font-bold text-sm">
+            Go
+        </button>
+    </div>
 </div>
 <!-- Features Section -->
 <div class="w-full flex justify-center py-5">
@@ -484,5 +431,6 @@ if (localStorage.getItem('language') === 'fr') {
 </script>
 </body>
 </html>
+
 
 
