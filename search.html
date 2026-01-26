@@ -39,6 +39,14 @@
     body.fr-active .lang-fr { display: inline; }
     body.fr-active .lang-fr-block { display: block; }
 </style>
+        <style>
+    /* Prevent horizontal scroll on the whole site */
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+        position: relative;
+    }
+</style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-x-hidden">
 <div class="flex min-h-screen flex-col">
@@ -423,4 +431,5 @@ if (localStorage.getItem('language') === 'fr') {
 <script src="chat.js"></script>
 </script>
 </html>
+
 
