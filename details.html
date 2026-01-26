@@ -197,7 +197,16 @@
             window.location.href = 'payment.html';
         }
     }
+    function toggleLanguage() {
+    document.body.classList.toggle('fr-active');
+    const isActive = document.body.classList.contains('fr-active');
+    localStorage.setItem('language', isActive ? 'fr' : 'en');
+}
+
+// Check for saved language on load
+if (localStorage.getItem('language') === 'fr') {
+    document.body.classList.add('fr-active');
+}
 </script>
 </body>
 </html>
-
