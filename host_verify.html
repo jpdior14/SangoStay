@@ -14,6 +14,15 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <!-- Tailwind Configuration -->
 <script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#13ec13", "background-light": "#f6f8f6", "background-dark": "#102210", "surface-dark": "#193319", "border-dark": "#326732", "text-secondary": "#92c992"}, fontFamily: {display: "Plus Jakarta Sans"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
+<style>
+    /* Default: Show English, Hide French */
+    .lang-fr { display: none; }
+    
+    /* When French is active: Hide English, Show French */
+    body.fr-active .lang-en { display: none; }
+    body.fr-active .lang-fr { display: inline; }
+    body.fr-active .lang-fr-block { display: block; }
+</style>
 </head>
 <body class="bg-background-dark text-white font-display overflow-x-hidden min-h-screen flex flex-col">
 <!-- Navbar -->
@@ -302,6 +311,7 @@
 <script src="chat.js"></script>
 
 </body></html>
+
 
 
 
