@@ -30,6 +30,15 @@
             background: #13ec13; 
         }
     </style>
+<style>
+    /* Default: Show English, Hide French */
+    .lang-fr { display: none; }
+    
+    /* When French is active: Hide English, Show French */
+    body.fr-active .lang-en { display: none; }
+    body.fr-active .lang-fr { display: inline; }
+    body.fr-active .lang-fr-block { display: block; }
+</style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-x-hidden">
 <div class="flex min-h-screen flex-col">
@@ -398,4 +407,5 @@
 <script src="chat.js"></script>
 </script>
 </html>
+
 
