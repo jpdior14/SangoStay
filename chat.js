@@ -1,6 +1,3 @@
-// 1. CONFIGURATION
-// IMPORTANT: If this key still gives 404, go to AI Studio and create a NEW key.
-// We use v1beta and the most standard model name
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
 // 2. UI ELEMENTS
@@ -115,5 +112,3 @@ if (userInput) {
     userInput.onkeypress = (e) => { if (e.key === 'Enter') handleSend(); };
 
 }
-
-
