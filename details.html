@@ -9,10 +9,6 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#13ec13", "background-light": "#f6f8f6", "background-dark": "#102210", "surface-dark": "#1a331a", "surface-highlight": "#234823", "text-secondary": "#92c992"}, fontFamily: {display: "Plus Jakarta Sans"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}}}};</script>
@@ -175,8 +171,20 @@
             mainImg.style.backgroundImage = `url('${property.image}')`;
         }
 
-            // 4. Initialize Map
-            initSangoMap(property);
+        const mapElement = document.getElementById('map');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // If the map div is visible on the screen
+                if (entry.isIntersecting) {
+                    console.log("User reached the map. Loading now...");
+                    initSangoMap(property); 
+                    observer.unobserve(mapElement); // Stop watching once loaded
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% of the map is visible
+
+        observer.observe(mapElement);
     }
     });
 
@@ -231,7 +239,12 @@ if (localStorage.getItem('language') === 'fr') {
     document.body.classList.add('fr-active');
 }
 </script>
+    <!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </body>
 </html>
+
 
 
