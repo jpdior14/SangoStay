@@ -147,10 +147,10 @@
 <script src="chat.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const selectedId = localStorage.getItem('selectedPropertyId');
-        const property = properties.find(p => p.id === selectedId);
-
-        if (property) {
+    const selectedId = localStorage.getItem('selectedPropertyId');
+    const property = properties.find(p => p.id === selectedId);
+    
+    if (property) {
             // 1. Update Text
             document.getElementById('prop-name').innerText = property.name;
             document.getElementById('prop-host').innerText = "Hosted by " + property.host;
@@ -169,7 +169,18 @@
 
             // 4. Initialize Map
             initSangoMap(property);
+
+        const isLiteMode = localStorage.getItem('sangoLiteMode') === 'true';
+
+        const mainImg = document.getElementById('main-img');
+        if (isLiteMode) {
+            mainImg.style.backgroundImage = "none";
+            mainImg.innerHTML = `<div class="flex items-center justify-center h-full text-text-secondary">Images disabled in Lite Mode</div>`;
+            mainImg.classList.add('bg-surface-dark');
+        } else {
+            mainImg.style.backgroundImage = `url('${property.image}')`;
         }
+    }
     });
 
     function initSangoMap(prop) {
@@ -225,3 +236,4 @@ if (localStorage.getItem('language') === 'fr') {
 </script>
 </body>
 </html>
+
