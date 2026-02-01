@@ -164,13 +164,7 @@
             document.getElementById('final-total').innerText = total.toLocaleString() + " XAF";
 
             // 3. Update Images
-            const mainImg = document.getElementById('main-img');
-            mainImg.style.backgroundImage = `url('${property.image}')`;
-
-            // 4. Initialize Map
-            initSangoMap(property);
-
-        const isLiteMode = localStorage.getItem('sangoLiteMode') === 'true';
+            const isLiteMode = localStorage.getItem('sangoLiteMode') === 'true';
 
         const mainImg = document.getElementById('main-img');
         if (isLiteMode) {
@@ -180,6 +174,9 @@
         } else {
             mainImg.style.backgroundImage = `url('${property.image}')`;
         }
+
+            // 4. Initialize Map
+            initSangoMap(property);
     }
     });
 
@@ -236,4 +233,5 @@ if (localStorage.getItem('language') === 'fr') {
 </script>
 </body>
 </html>
+
 
