@@ -109,6 +109,13 @@
 </div>
 </div>
 </div>
+    <!-- USSD Shortcut for Torchlight Users -->
+<div class="mt-6 flex justify-center">
+    <button onclick="openUssdSim()" class="flex items-center gap-2 text-primary border border-primary/30 px-4 py-2 rounded-full bg-primary/5 hover:bg-primary/10 transition-all text-xs font-bold uppercase tracking-widest">
+        <span class="material-symbols-outlined text-sm">dialpad</span>
+        No Data? Dial *123#
+    </button>
+</div>
 <!-- Features Section -->
 <div class="w-full flex justify-center py-5">
 <div class="layout-content-container flex flex-col max-w-[1200px] flex-1 px-4 md:px-10">
@@ -431,9 +438,61 @@
 if (localStorage.getItem('language') === 'fr') {
     document.body.classList.add('fr-active');
 }
+
+    function openUssdSim() {
+    document.getElementById('ussd-modal').classList.remove('hidden');
+}
+
+function closeUssdSim() {
+    document.getElementById('ussd-modal').classList.add('hidden');
+}
+
+// Simple USSD Logic
+document.getElementById('ussd-input').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        const val = this.value;
+        const screen = document.getElementById('ussd-screen-content');
+        
+        if (val === "1") {
+            screen.innerHTML = "<p>Select City:</p><p>1. Douala</p><p>2. Yaounde</p><p>3. Kribi</p>";
+        } else if (val === "2") {
+            screen.innerHTML = "<p>Enter CNI Number to see bookings:</p>";
+        } else {
+            screen.innerHTML = "<p>Invalid option.</p><p>0. Back</p>";
+        }
+        this.value = "";
+    }
+});
 </script>
+    <!-- USSD SIMULATOR MODAL -->
+<div id="ussd-modal" class="hidden fixed inset-0 z-[200] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#222] w-full max-w-[300px] rounded-[30px] border-[6px] border-[#444] overflow-hidden shadow-2xl">
+        <!-- Phone Top -->
+        <div class="bg-[#333] h-8 w-full flex items-center justify-center">
+            <div class="w-12 h-1.5 bg-[#555] rounded-full"></div>
+        </div>
+        
+        <!-- Screen -->
+        <div class="bg-[#f0f0f0] aspect-[3/4] p-4 font-mono text-black text-sm flex flex-col">
+            <div id="ussd-screen-content">
+                <p class="mb-2">Welcome to SangoStay</p>
+                <p>1. Find House</p>
+                <p>2. My Bookings</p>
+                <p>3. Verify CNI</p>
+                <p>4. Help</p>
+            </div>
+            <div class="mt-auto border-t border-gray-400 pt-2">
+                <input type="text" id="ussd-input" class="w-full bg-transparent border-none focus:ring-0 p-0 text-black" placeholder="Type number..." autofocus>
+            </div>
+        </div>
+
+        <!-- Phone Bottom -->
+        <div class="bg-[#333] p-4 flex justify-center">
+            <button onclick="closeUssdSim()" class="w-12 h-12 rounded-full bg-[#444] border border-[#555] flex items-center justify-center text-white">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
-
-
-
