@@ -181,16 +181,34 @@
         }
     });
 	function handlePayment() {
-    // 1. Simulate the MoMo Push
-    alert("SangoStay: Payment request sent to your phone. Please enter your PIN.");
+    // 1. Get the total price from the page
+    const total = document.getElementById('pay-total').innerText;
+    document.getElementById('modal-amount').innerText = total;
+
+    // 2. Show the fake phone modal
+    document.getElementById('momo-modal').classList.remove('hidden');
+}
+
+function closeMomo() {
+    // Hide the modal if they cancel
+    document.getElementById('momo-modal').classList.add('hidden');
+}
+
+function confirmMomo() {
+    const modalContent = document.querySelector('#momo-modal > div');
     
-    // 2. Wait 2 seconds for the "transaction" to process
+    // 1. Show a "Processing" state inside the fake phone
+    modalContent.innerHTML = `
+        <div class="p-10 text-center bg-white">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-600 border-t-transparent mb-4"></div>
+            <p class="text-sm font-bold text-gray-700">Transaction Processing...</p>
+        </div>
+    `;
+
+    // 2. Wait 2 seconds, then go to verification
     setTimeout(() => {
-        alert("Payment Received! Now, for your safety and the host's safety, please verify your identity.");
-        
-        // 3. REDIRECT TO P6 (The Verification Page)
-        window.location.href = 'guest_verify.html'; 
-    }, 2000);
+        window.location.href = 'guest_verify.html';
+    }, 2500);
 }
 </script>
 </div>
@@ -362,7 +380,32 @@ if (localStorage.getItem('language') === 'fr') {
 <script src="data.js"></script>
 <script src="config.js"></script>
 <script src="chat.js"></script>
-
+<!-- FAKE MOMO USSD MODAL -->
+<div id="momo-modal" class="hidden fixed inset-0 z-[200] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
+    <!-- The "Phone" Box -->
+    <div class="bg-[#e2e2e2] text-black rounded-2xl w-full max-w-[300px] overflow-hidden shadow-2xl font-sans border-4 border-gray-800">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-xs font-bold text-gray-500">Mobile Money</span>
+                <span class="material-symbols-outlined text-sm text-gray-500">signal_cellular_alt</span>
+            </div>
+            
+            <p class="text-sm font-medium mb-4">
+                Authorize payment of <span id="modal-amount">0</span> XAF to SangoStay? 
+                Enter PIN to confirm.
+            </p>
+            
+            <input type="password" maxlength="5" placeholder="****" 
+                class="w-full border-b-2 border-gray-400 bg-transparent text-center text-2xl tracking-widest focus:outline-none focus:border-blue-500 mb-4 text-black">
+        </div>
+        
+        <div class="flex border-t border-gray-300">
+            <button onclick="closeMomo()" class="flex-1 py-3 text-blue-600 font-bold border-r border-gray-300 hover:bg-gray-200 transition-colors">Cancel</button>
+            <button onclick="confirmMomo()" class="flex-1 py-3 text-blue-600 font-bold hover:bg-gray-200 transition-colors">Send</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
+
 
