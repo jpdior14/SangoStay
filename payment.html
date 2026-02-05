@@ -180,12 +180,12 @@
             document.getElementById('pay-btn-text').innerText = "Pay " + totalCost.toLocaleString() + " XAF";
         }
     });
-	function handlePayment() {
-    // 1. Get the total price from the page
-    const total = document.getElementById('pay-total').innerText;
-    document.getElementById('modal-amount').innerText = total;
 
-    // 2. Show the fake phone modal
+	function handlePayment() {
+    const booking = JSON.parse(localStorage.getItem('currentBooking'));
+    const total = booking.pricePerNight * booking.nights;
+    
+    document.getElementById('modal-amount').innerText = total.toLocaleString() + " XAF";
     document.getElementById('momo-modal').classList.remove('hidden');
 }
 
@@ -204,11 +204,17 @@ function confirmMomo() {
             <p class="text-sm font-bold text-gray-700">Transaction Processing...</p>
         </div>
     `;
-
-    // 2. Wait 2 seconds, then go to verification
+    document.getElementById('momo-modal').innerHTML = `
+        <div class="py-10">
+            <span class="material-symbols-outlined text-6xl text-primary animate-bounce">check_circle</span>
+            <h3 class="text-white font-bold mt-4">Payment Successful!</h3>
+            <p class="text-gray-400 text-sm">Redirecting to verification...</p>
+        </div>
+    `;
+	// 2. Wait 2 seconds, then go to verification
     setTimeout(() => {
         window.location.href = 'guest_verify.html';
-    }, 2500);
+    }, 2000);
 }
 </script>
 </div>
@@ -407,5 +413,6 @@ if (localStorage.getItem('language') === 'fr') {
 </div>
 </body>
 </html>
+
 
 
