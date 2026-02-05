@@ -331,7 +331,32 @@
 if (localStorage.getItem('language') === 'fr') {
     document.body.classList.add('fr-active');
 }
+
+        function simulateScan() {
+    const btn = document.querySelector('button');
+    const status = document.getElementById('status-text'); // Add this ID to your status p tag
+    
+    btn.innerHTML = `<span class="animate-spin">⏳</span> Scanning CNI...`;
+    btn.disabled = true;
+
+    setTimeout(() => {
+        status.innerText = "Extracting Name: JEAN-PIERRE ...";
+        status.classList.add('text-primary');
+    }, 1500);
+
+    setTimeout(() => {
+        status.innerText = "Verifying with Delegation of National Security (DGSN) database...";
+    }, 3000);
+
+    setTimeout(() => {
+        btn.innerHTML = "✅ Identity Verified";
+        btn.classList.replace('bg-primary', 'bg-green-600');
+        alert("CNI Verified! Your booking is now active.");
+        window.location.href = "index.html";
+    }, 5000);
+}
 </script>
 </body>
 </html>
+
 
