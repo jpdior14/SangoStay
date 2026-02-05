@@ -172,20 +172,16 @@
         }
 
         const mapElement = document.getElementById('map');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                // If the map div is visible on the screen
-                if (entry.isIntersecting) {
-                    console.log("User reached the map. Loading now...");
-                    initSangoMap(property); 
-                    observer.unobserve(mapElement); // Stop watching once loaded
-                }
-            });
-        }, { threshold: 0.1 }); // Trigger when 10% of the map is visible
 
-        observer.observe(mapElement);
+        // Instead of calling initSangoMap(property) immediately:
+const mapObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+        initSangoMap(property);
+        mapObserver.disconnect(); // Only load once
     }
+});
+mapObserver.observe(document.getElementById('map'));
+        }
     });
 
     function initSangoMap(prop) {
@@ -245,6 +241,7 @@ if (localStorage.getItem('language') === 'fr') {
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </body>
 </html>
+
 
 
 
