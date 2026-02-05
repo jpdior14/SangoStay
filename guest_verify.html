@@ -321,17 +321,7 @@
         window.location.href = 'index.html';
     }, 2000);
 }
-        function toggleLanguage() {
-    document.body.classList.toggle('fr-active');
-    const isActive = document.body.classList.contains('fr-active');
-    localStorage.setItem('language', isActive ? 'fr' : 'en');
-}
-
-// Check for saved language on load
-if (localStorage.getItem('language') === 'fr') {
-    document.body.classList.add('fr-active');
-}
-
+        
         function simulateScan() {
     const btn = document.querySelector('button');
     const status = document.getElementById('status-text'); // Add this ID to your status p tag
@@ -355,8 +345,20 @@ if (localStorage.getItem('language') === 'fr') {
         window.location.href = "index.html";
     }, 5000);
 }
+        
+        function toggleLanguage() {
+    document.body.classList.toggle('fr-active');
+    const isActive = document.body.classList.contains('fr-active');
+    localStorage.setItem('language', isActive ? 'fr' : 'en');
+}
+
+// Check for saved language on load
+if (localStorage.getItem('language') === 'fr') {
+    document.body.classList.add('fr-active');
+}
 </script>
 </body>
 </html>
+
 
 
