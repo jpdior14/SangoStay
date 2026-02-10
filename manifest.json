@@ -1,0 +1,21 @@
+{
+  "name": "SangoStay - Verified Rentals",
+  "short_name": "SangoStay",
+  "description": "Find verified short-term rentals in Cameroon.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#92c992",
+  "icons": [
+    {
+      "src": "Sango.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "Sango.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
